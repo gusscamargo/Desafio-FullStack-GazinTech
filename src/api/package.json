@@ -15,6 +15,7 @@
   "author": "Gustavo Michels de Camargo",
   "license": "ISC",
   "dependencies": {
-    "restify": "^8.6.0"
+    "restify": "^8.6.0",
+    "restify-router": "^0.6.2"
   }
 }

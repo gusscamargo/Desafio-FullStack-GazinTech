@@ -1,8 +1,8 @@
 const Router = require("restify-router").Router
-let route = new Router()
+let router = new Router()
 
 const indexController = require("../controllers/indexController")
 
-route.get("/", indexController.index)
+router.get("/", indexController.index)
 
-module.exports = route
+module.exports = router

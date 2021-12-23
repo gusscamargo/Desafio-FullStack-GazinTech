@@ -15,8 +15,10 @@
   "author": "Gustavo Michels de Camargo",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "mysql2": "^2.3.3",
     "restify": "^8.6.0",
-    "restify-router": "^0.6.2"
+    "restify-router": "^0.6.2",
+    "sequelize": "^6.12.2"
   }
 }

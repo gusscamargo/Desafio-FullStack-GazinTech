@@ -21,6 +21,7 @@ services:
       image: mysql:5.7.35
       volumes: 
         - db_data:/var/lib/mysql
+        - ./sql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
       restart: always
       networks: 
         - rede

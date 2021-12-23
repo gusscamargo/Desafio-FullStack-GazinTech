@@ -1,5 +1,5 @@
 {
-  "name": "docker-nodejs-mysql",
+  "name": "desafio-gazin-tech",
   "description": "Manutenção de um ambiente de desenvolvimento Docker para trabalhos com NodeJS e MySQL.",
   "version": "1.0.0",
   "scripts": {
@@ -14,8 +14,7 @@
   "keywords": [],
   "author": "Gustavo Michels de Camargo",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gusscamargo/docker-nodejs-mysql/issues"
-  },
-  "homepage": "https://github.com/gusscamargo/docker-nodejs-mysql"  
+  "dependencies": {
+    "restify": "^8.6.0"
+  }
 }

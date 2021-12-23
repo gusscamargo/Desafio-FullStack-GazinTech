@@ -1,8 +1,21 @@
-var http = require('http');
+const restify = require('restify');
 
-const port = 3000;
+const server = restify.createServer({
+  name: 'myapp',
+  version: '1.0.0'
+});
 
-http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Ola Mundo');
-}).listen(port);
+server.use(restify.plugins.acceptParser(server.acceptable));
+server.use(restify.plugins.queryParser());
+server.use(restify.plugins.bodyParser());
+
+server.get('/', (req, res, next) => {
+  res.send({
+    "teste": "oi2"
+  });
+  return next();
+});
+
+server.listen(3000, () => {
+  console.log("SERVER ON");
+});

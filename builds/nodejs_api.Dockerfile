@@ -3,7 +3,7 @@ FROM node:16
 RUN npm i -g -y nodemon mysql2 express express-generator
 
 RUN mkdir /usr/data
-COPY src/package.json /usr/data
+COPY src/api/package.json /usr/data
 
 WORKDIR /usr/data
 

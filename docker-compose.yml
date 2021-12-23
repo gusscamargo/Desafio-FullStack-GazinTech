@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-  app:
+  api:
     build:
         context: ./
-        dockerfile: ./builds/nodejs.Dockerfile
+        dockerfile: ./builds/nodejs_api.Dockerfile
     restart: always
     ports:
       - "${APP}:3000"
     volumes: 
-      - ./src:/usr/app
-      - node_modules:/usr/data
+      - ./src/api:/usr/app
+      - node_modules_api:/usr/data
     networks: 
       - rede
     depends_on:
@@ -44,7 +44,7 @@ services:
 
 volumes: 
   db_data:
-  node_modules:
+  node_modules_api:
 
 networks: 
   rede:

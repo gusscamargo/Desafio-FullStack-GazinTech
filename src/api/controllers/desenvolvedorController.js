@@ -75,10 +75,16 @@ controller.add = async (req, res, next) => {
 }
 
 controller.edit = async (req, res, next) => {
+    const data = await req.body
+
     try{
+        let desenvolvedor = await Desenvolvedor.findByPk(data.id)
+        desenvolvedor = await desenvolvedor.update(data)
+
         res.send(200, {
-            message: "ok"
-        })        
+            message: "success",
+            data: desenvolvedor
+        })       
     }catch(err){
         res.send(400, {
             message: "error",
@@ -90,10 +96,15 @@ controller.edit = async (req, res, next) => {
 }
 
 controller.delete = async (req, res, next) => {
+    const {id} = await req.body
+    
     try{
+        const desenvolvedor = await Desenvolvedor.findByPk(id)
+        if(desenvolvedor) await desenvolvedor.destroy()
+        
         res.send(204, {
-            message: "ok"
-        })        
+            message: "success"
+        })       
     }catch(err){
         res.send(400, {
             message: "error",

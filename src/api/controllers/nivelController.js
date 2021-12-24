@@ -29,7 +29,7 @@ controller.getAll = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }
 
@@ -59,7 +59,7 @@ controller.getOne = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }
 
@@ -80,7 +80,7 @@ controller.add = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }
 
@@ -102,7 +102,7 @@ controller.edit = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }
     return next()
@@ -136,7 +136,7 @@ controller.delete = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }
     return next()

@@ -3,12 +3,14 @@ let router = new Router()
 
 const desenvolvedorController = require("../controllers/desenvolvedorController")
 
-router.get("/", (req, res, next) => {
-    res.send(200, {
-        message: "Oi"
-    })
+router.get("/", desenvolvedorController.getAll)
 
-    return next()
-})
+router.get("/:id", desenvolvedorController.getOne)
+
+router.post("/add", desenvolvedorController.add)
+
+router.put("/edit", desenvolvedorController.edit)
+
+router.del("/delete", desenvolvedorController.delete)
 
 module.exports = router

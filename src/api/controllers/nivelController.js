@@ -1,3 +1,5 @@
+const sequelize = require("sequelize")
+
 const Nivel = require("../models/nivel")
 const Desenvolvedor = require("../models/desenvolvedor")
 
@@ -5,7 +7,19 @@ controller = new Object()
 
 controller.get = async (req, res, next) => {
     try{
-        const niveis = await Nivel.findAll()
+        // Procura todos os niveis e adiciona quanto devs estão relacionados
+        const niveis = await Nivel.findAll({
+            attributes: {
+                include: [
+                    [
+                        sequelize.literal(
+                            "(SELECT COUNT(*) FROM `desenvolvedor` WHERE `desenvolvedor`.`nivel_id` = `Nivel`.`id`)"
+                        ),
+                        "numeroDevs"
+                    ]
+                ]
+            }
+        })
 
         res.send(200, {
             message: "success",

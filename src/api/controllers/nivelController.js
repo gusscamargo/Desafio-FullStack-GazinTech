@@ -39,7 +39,18 @@ controller.get = async (req, res, next) => {
 controller.getOne = async (req, res, next) => {
     const {id} = await req.params
     try{
-        const nivel = await Nivel.findByPk(id)
+        const nivel = await Nivel.findByPk(id, {
+            attributes: {
+                include: [
+                    [
+                        sequelize.literal(
+                            "(SELECT COUNT(*) FROM `desenvolvedor` WHERE `desenvolvedor`.`nivel_id` = `Nivel`.`id`)"
+                        ),
+                        "numeroDevs"
+                    ]
+                ]
+            }
+        })
         
         res.send(200, {
             message: "success",

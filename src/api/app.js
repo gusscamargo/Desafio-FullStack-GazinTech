@@ -7,7 +7,7 @@ const server = restify.createServer({
 });
 
 // Porta servidor
-const port = 3000
+const port = process.env.PORT_API || 3000
 
 // Plugins
 server.use(restify.plugins.acceptParser(server.acceptable));

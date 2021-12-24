@@ -22,7 +22,7 @@ controller.get = async (req, res, next) => {
 }
 
 controller.getOne = async (req, res, next) => {
-    const id = await req.params.id
+    const {id} = await req.params
     try{
         const nivel = await Nivel.findByPk(id)
         
@@ -83,7 +83,7 @@ controller.edit = async (req, res, next) => {
 }
 
 controller.delete = async (req, res, next) => {
-    const id = await req.body.id
+    const {id} = await req.body
 
     try{
         const {count} = await Desenvolvedor.findAndCountAll({
@@ -103,7 +103,9 @@ controller.delete = async (req, res, next) => {
         const nivel = await Nivel.findByPk(id)
         if(nivel) await nivel.destroy()
         
-        res.send(204) 
+        res.send(204, {
+            message: "success"
+        }) 
 
     }catch(err){
         res.send(400, {

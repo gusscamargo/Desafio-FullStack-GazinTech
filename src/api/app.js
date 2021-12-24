@@ -15,8 +15,8 @@ server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
 
 // Routes
-const indexRoute = require("./routes/index")
-indexRoute.applyRoutes(server)
+const nivelRoute = require("./routes/nivel")
+nivelRoute.applyRoutes(server, "/nivel")
 
 
 server.listen(port, () => {

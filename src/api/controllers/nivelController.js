@@ -7,7 +7,8 @@ controller = new Object()
 
 controller.get = async (req, res, next) => {
     try{
-        // Procura todos os niveis e adiciona quanto devs estão relacionados
+
+        // Procura todos os niveis e adiciona quantos devs estão relacionados
         const niveis = await Nivel.findAll({
             attributes: {
                 include: [

@@ -5,7 +5,14 @@ class Nivel extends Model{}
 
 Nivel.init(
 {
-    nivel: DataTypes.TEXT
+    nivel: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notNull: true,
+            notEmpty: true
+        }
+    }
 }, {
         modelName: "Nivel",
         tableName: "nivel",

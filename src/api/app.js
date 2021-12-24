@@ -9,16 +9,6 @@ const server = restify.createServer({
 // Porta servidor
 const port = 3000
 
-const db = require("./config/connectionBD")
-
-try{
-  db.authenticate()
-  console.log("FOi")
-}catch(err){
-  console.err(err)
-}
-
-
 // Plugins
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());

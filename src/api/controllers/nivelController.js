@@ -47,7 +47,8 @@ controller.add = async (req, res, next) => {
         const resultado = await Nivel.create(data)
 
         res.send(201, {
-            message: "success"
+            message: "success", 
+            data: resultado
         }) 
 
     }catch(err){

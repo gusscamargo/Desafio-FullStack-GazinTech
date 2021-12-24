@@ -5,7 +5,7 @@ const Desenvolvedor = require("../models/desenvolvedor")
 
 controller = new Object()
 
-controller.get = async (req, res, next) => {
+controller.getAll = async (req, res, next) => {
     try{
 
         // Procura todos os niveis e adiciona quantos devs estão relacionados

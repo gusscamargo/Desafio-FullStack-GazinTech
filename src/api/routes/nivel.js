@@ -3,7 +3,7 @@ let router = new Router()
 
 const nivelController = require("../controllers/nivelController")
 
-router.get("/", nivelController.get)
+router.get("/", nivelController.getAll)
 
 router.get("/:id", nivelController.getOne)
 

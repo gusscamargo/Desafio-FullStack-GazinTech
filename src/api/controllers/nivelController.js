@@ -5,6 +5,7 @@ const Desenvolvedor = require("../models/desenvolvedor")
 
 controller = new Object()
 
+// Retorna todos os niveis
 controller.getAll = async (req, res, next) => {
     try{
 
@@ -36,6 +37,8 @@ controller.getAll = async (req, res, next) => {
     return next()
 }
 
+
+// Retorna um nivel especificado
 controller.getOne = async (req, res, next) => {
     const {id} = await req.params
     try{
@@ -66,6 +69,7 @@ controller.getOne = async (req, res, next) => {
     return next()
 }
 
+// Adiciona um nivel
 controller.add = async (req, res, next) => {
     const data = await req.body
 
@@ -87,6 +91,7 @@ controller.add = async (req, res, next) => {
      return next() 
 }
 
+// Edita um nivel
 controller.edit = async (req, res, next) => {
     const data = await req.body
 
@@ -108,6 +113,8 @@ controller.edit = async (req, res, next) => {
     return next()
 }
 
+
+// Excluiu um nivel mas não sem antes verificar se não há qualquer desenvolvedor relacionado a ele
 controller.delete = async (req, res, next) => {
     const {id} = await req.body
 

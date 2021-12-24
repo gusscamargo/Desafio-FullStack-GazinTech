@@ -3,8 +3,9 @@ const controller = new Object()
 const Desenvolvedor = require("../models/desenvolvedor")
 const Nivel = require("../models/nivel")
 
-controller.getAll = async (req, res, next) => {
-    
+
+// Retona todos os desenvovedores e os niveis deles
+controller.getAll = async (req, res, next) => {    
 
     try{
 
@@ -23,13 +24,14 @@ controller.getAll = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }   
 
     return next()
 }
 
+// Retona um desenvovedor especificado e o nivei dele
 controller.getOne = async (req, res, next) => {
     const {id} = req.params
 
@@ -47,13 +49,15 @@ controller.getOne = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }   
 
     return next()
 }
 
+
+// Adiciona um desenvolvedor
 controller.add = async (req, res, next) => {
     const data = await req.body
 
@@ -67,13 +71,14 @@ controller.add = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }   
 
     return next()
 }
 
+// Edita um desenvolvedor
 controller.edit = async (req, res, next) => {
     const data = await req.body
 
@@ -88,16 +93,17 @@ controller.edit = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }   
 
     return next()
 }
 
+// Deleta um desenvolvedor
 controller.delete = async (req, res, next) => {
     const {id} = await req.body
-    
+
     try{
         const desenvolvedor = await Desenvolvedor.findByPk(id)
         if(desenvolvedor) await desenvolvedor.destroy()
@@ -108,7 +114,7 @@ controller.delete = async (req, res, next) => {
     }catch(err){
         res.send(400, {
             message: "error",
-            error: err
+            error: err.name
         })
     }   
 

@@ -16,7 +16,10 @@ server.use(restify.plugins.bodyParser({ mapParams: true }));
 
 // Routes
 const nivelRoute = require("./routes/nivel")
+const desenvolvedorRouter = require("./routes/desenvolvedor")
+
 nivelRoute.applyRoutes(server, "/nivel")
+desenvolvedorRouter.applyRoutes(server, "/desenvolvedor")
 
 
 server.listen(port, () => {

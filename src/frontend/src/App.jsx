@@ -7,7 +7,9 @@ function App(props) {
   return (
     <Router> 
       <Header />
-      <Content />
+      <main>
+        <Content />
+      </main>
     </Router>
   );
 }

@@ -13,7 +13,7 @@ export default function NotFound404() {
                     <h1>404</h1>
                     <h2>PAGE NOT FOUND</h2>
                     <h3>BACK TO HOME?</h3>
-                    <Link to="/" className="tes">YES</Link>
+                    <Link to="/" className="yes">YES</Link>
                     <a href="https://www.youtube.com/watch?v=G3AfIvJBcGo" target="_blank">NO</a>
                 </div>
             </section>         

@@ -1,5 +1,4 @@
 import { Navbar as NavbarMaterialize, NavItem, Icon} from "react-materialize"
-import  { NavLink } from "react-router-dom";
 
 const Navbar = ({desafio, linkedIn, github}) => {
 
@@ -16,9 +15,9 @@ const Navbar = ({desafio, linkedIn, github}) => {
             }
             extendWith={
             <NavbarMaterialize className={classNavbar}>
-                <NavLink className={classButtonsMenus} to="/">Home</NavLink>
-                <NavLink className={classButtonsMenus} to="/nivel">Nivel</NavLink>
-                <NavLink className={classButtonsMenus} to="/desenvolvedor">Desenvolvedor</NavLink>
+                <NavItem className={classButtonsMenus} href="/">Home</NavItem>
+                <NavItem className={classButtonsMenus} href="/nivel">Nivel</NavItem>
+                <NavItem className={classButtonsMenus} href="/desenvolvedor">Desenvolvedor</NavItem>
             </NavbarMaterialize>
             }
             id="mobile-nav"

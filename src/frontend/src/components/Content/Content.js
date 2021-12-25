@@ -6,12 +6,12 @@ import Desenvolvedor from "../../pages/Desenvolvedor/DesenvolvedorPage"
 
 export default function Content() {
     return (
-        <div className="container">
+      <main className="container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/nivel" element={<Nivel />} />
           <Route path="/desenvolvedor" element={<Desenvolvedor />} />
         </Routes>
-      </div>
+      </main>
     )
 }

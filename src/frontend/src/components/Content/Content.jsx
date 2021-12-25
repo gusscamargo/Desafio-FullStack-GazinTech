@@ -7,11 +7,13 @@ import NotFound404 from "../../pages/Error/NotFound404Page"
 
 export default function Content() {
     return (
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/nivel" element={<Nivel />} />
-          <Route path="/desenvolvedor" element={<Desenvolvedor />} />
-          <Route path="*" element={<NotFound404 />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/nivel" element={<Nivel />} />
+            <Route path="/desenvolvedor" element={<Desenvolvedor />} />
+            <Route path="*" element={<NotFound404 />} />
+          </Routes>
+        </main>
     )
 }

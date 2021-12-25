@@ -1,14 +1,20 @@
-import { Navbar as NavbarMaterialize, NavItem, Tab, Tabs, Icon } from "react-materialize"
+import { Navbar as NavbarMaterialize, NavItem, Icon } from "react-materialize"
 
-const Navbar = ({desafio, linkedIn, github }) => {
+const Navbar = ({desafioUrl, linkedIn, github}) => {
 
     return (
         <NavbarMaterialize
-            alignLinks="left"
+            alignLinks="right"
             brand={
-            <a className="brand-logo" href={desafio.url} target="_blank">{desafio.titulo}</a>
-        }
-            centerLogo
+                <a className="brand-logo" target="_blank" href={desafioUrl}>Desafio-FullStack / Gazin Tech</a>
+            }
+            extendWith={
+            <NavbarMaterialize>
+                <NavItem href="/">Home</NavItem>
+                <NavItem href="/nivel">Nivel</NavItem>
+                <NavItem href="/desenvolvedor">Desenvolvedor</NavItem>
+            </NavbarMaterialize>
+            }
             id="mobile-nav"
             menuIcon={<Icon>menu</Icon>}
             options={{
@@ -23,14 +29,11 @@ const Navbar = ({desafio, linkedIn, github }) => {
                 preventScrolling: true
             }}
             >
-            <NavItem href="/">
-                Home
+            <NavItem href={github} target="_blank">
+                Meu Github
             </NavItem>
-            <NavItem href="/nivel">
-                Nivel
-            </NavItem>
-            <NavItem href="/desenvolvedor">
-                Desenvolvedor
+            <NavItem href={linkedIn} target="_blank">
+                Meu LinkedIn
             </NavItem>
         </NavbarMaterialize>
     )

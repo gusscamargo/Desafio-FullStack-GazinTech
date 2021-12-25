@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import 'materialize-css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Home from "./pages/Home";
-import Nivel from "./pages/Nivel";
-import Desenvolvedor from "./pages/Desenvolvedor";
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -18,9 +14,7 @@ import Desenvolvedor from "./pages/Desenvolvedor";
 // );
 ReactDOM.render(
   <React.StrictMode>
-      <App>
-        <Home />
-      </App>
+      <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

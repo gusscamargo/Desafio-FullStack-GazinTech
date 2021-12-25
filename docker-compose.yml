@@ -7,7 +7,7 @@ services:
         dockerfile: ./builds/nodejs_api.Dockerfile
     restart: always
     ports:
-      - "${APP}:3000"
+      - "${API}:3000"
     volumes: 
       - ./src/api:/usr/app
       - node_modules_api:/usr/data
@@ -15,6 +15,21 @@ services:
       - rede
     depends_on:
       - mysql
+
+  frontend:
+    build:
+        context: ./
+        dockerfile: ./builds/nodejs_frontend.Dockerfile
+    restart: always
+    ports:
+      - "${FRONTEND}:3000"
+    volumes: 
+      - ./src/frontend:/usr/app
+      - node_modules_frontend:/usr/data
+    networks: 
+      - rede
+    depends_on:
+      - api
 
   mysql:
       image: mysql:5.7.35
@@ -44,6 +59,7 @@ services:
 volumes: 
   db_data:
   node_modules_api:
+  node_modules_frontend:
 
 networks: 
   rede:

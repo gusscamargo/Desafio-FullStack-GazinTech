@@ -1,5 +1,5 @@
 import { Navbar as NavbarMaterialize, NavItem, Icon} from "react-materialize"
-import  { NavLink } from "react-router-dom";
+import  { NavLink } from "react-router-dom"
 
 const Navbar = ({desafio, linkedIn, github}) => {
 

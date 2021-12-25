@@ -4,14 +4,6 @@ import 'materialize-css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//       <App>
-//         <Home />
-//       </App>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
 ReactDOM.render(
   <React.StrictMode>
       <App />

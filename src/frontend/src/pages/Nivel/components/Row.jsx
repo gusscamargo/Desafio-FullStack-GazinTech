@@ -32,7 +32,7 @@ export default function Row({ id, nivel, numeroDevs}) {
                             position: 'top'
                         }}
                         waves="light"
-                        icon={<Icon>block</Icon>}
+                        icon={<Icon>delete</Icon>}
                     />
                 </div>
             </td>

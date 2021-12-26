@@ -9,7 +9,7 @@ export default function Body() {
 
     const [devData, setDevData] = useState([])
 
-    const getNiveis = async () => {
+    const getDesenvolvedores = async () => {
         const response = await axios.get(`${URL_API}/desenvolvedor/`)
 
         setDevData(response.data.data)
@@ -17,7 +17,7 @@ export default function Body() {
 
     // Puxando dados da API
     useEffect(
-        () => getNiveis(),
+        () => getDesenvolvedores(),
         []
     )
 
@@ -28,6 +28,7 @@ export default function Body() {
                     (item, index)  => 
                     <Row
                         key={index}
+                        id={item.id}
                         nome={item.nome}
                         nivel={item.Nivel.nivel}
                         idade={item.idade}

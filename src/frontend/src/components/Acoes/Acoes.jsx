@@ -3,7 +3,7 @@ import { Button, Icon, Modal } from "react-materialize"
 
 export default function Acoes({id, modalView}) {
     const { pathname } = window.location
-    
+
     return (
         <div className="btn-group">
             <Modal

@@ -1,6 +1,9 @@
 const restify = require('restify')
 require('dotenv').config()
 
+// Middleware
+const crossOrigin = require("./middleware/crossOrigin")
+
 const server = restify.createServer({
   name: ' desafio-gazin-tech',
   version: '1.0.0'
@@ -13,6 +16,7 @@ const port = process.env.PORT_API || 3000
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser({ mapParams: true }));
+server.use(crossOrigin)
 
 // Routes
 const nivelRoute = require("./routes/nivel")

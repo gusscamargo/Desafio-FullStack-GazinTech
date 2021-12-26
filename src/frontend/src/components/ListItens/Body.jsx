@@ -7,9 +7,7 @@ export default function Body({data}) {
                 data.map((item, index) => 
                     <Row 
                         key={index}
-                        id={item.id}
-                        nivel={item.nivel}
-                        numeroDevs={item.numeroDevs} 
+                        data={item}
                     />
                 )
             }

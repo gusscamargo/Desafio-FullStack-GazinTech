@@ -16,15 +16,11 @@ controller.getAll = async (req, res, next) => {
         })
 
 
-        res.send(200, {
-            message: "success",
-            data: data
-        }) 
+        res.send(200, data) 
                
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }   
 
@@ -42,14 +38,10 @@ controller.getOne = async (req, res, next) => {
             ]
         })
 
-        res.send(200, {
-            message: "success",
-            data: data
-        })       
+        res.send(200, data)       
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }   
 
@@ -64,14 +56,10 @@ controller.add = async (req, res, next) => {
     try{
         const resultado = await Desenvolvedor.create(data)
 
-        res.send(201, {
-            message: "ok",
-            data: resultado
-        })        
+        res.send(201, resultado)        
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }   
 
@@ -86,14 +74,10 @@ controller.edit = async (req, res, next) => {
         let desenvolvedor = await Desenvolvedor.findByPk(data.id)
         desenvolvedor = await desenvolvedor.update(data)
 
-        res.send(200, {
-            message: "success",
-            data: desenvolvedor
-        })       
+        res.send(200, desenvolvedor)       
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }   
 
@@ -108,13 +92,10 @@ controller.delete = async (req, res, next) => {
         const desenvolvedor = await Desenvolvedor.findByPk(id)
         if(desenvolvedor) await desenvolvedor.destroy()
         
-        res.send(204, {
-            message: "success"
-        })       
+        res.send(204)       
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }   
 

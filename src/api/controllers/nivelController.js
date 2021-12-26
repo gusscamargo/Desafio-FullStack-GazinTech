@@ -23,14 +23,10 @@ controller.getAll = async (req, res, next) => {
             }
         })
 
-        res.send(200, {
-            message: "success",
-            data: niveis
-        })
+        res.send(200, niveis)
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }
 
@@ -55,14 +51,10 @@ controller.getOne = async (req, res, next) => {
             }
         })
         
-        res.send(200, {
-            message: "success",
-            data: nivel
-        })
+        res.send(200, nivel)
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }
 
@@ -76,15 +68,11 @@ controller.add = async (req, res, next) => {
     try{
         const resultado = await Nivel.create(data)
 
-        res.send(201, {
-            message: "success", 
-            data: resultado
-        }) 
+        res.send(201, resultado) 
 
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }
 
@@ -99,15 +87,11 @@ controller.edit = async (req, res, next) => {
         let nivel = await Nivel.findByPk(data.id)
         nivel = await nivel.update(data)
 
-        res.send(200, {
-            message: "success",
-            data: nivel
-        }) 
+        res.send(200, nivel) 
 
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }
     return next()
@@ -127,8 +111,7 @@ controller.delete = async (req, res, next) => {
 
         if(count > 0){
             res.send(501, {
-                message: "error",
-                error: "One or more developers associates"
+                message: "One or more developers associates"
             }) 
         }
 
@@ -136,14 +119,11 @@ controller.delete = async (req, res, next) => {
         const nivel = await Nivel.findByPk(id)
         if(nivel) await nivel.destroy()
         
-        res.send(204, {
-            message: "success"
-        }) 
+        res.send(204) 
 
     }catch(err){
         res.send(400, {
-            message: "error",
-            error: err.name
+            message: err.name
         })
     }
     return next()

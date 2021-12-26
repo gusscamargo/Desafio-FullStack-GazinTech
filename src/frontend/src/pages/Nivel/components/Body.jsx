@@ -15,9 +15,10 @@ export default function Body() {
         setNivelData(response.data.data)
     }
 
-    useEffect(() => {
-        getNivelData()
-    }, [])
+    useEffect(
+            () => getNivelData(),
+            []
+        )
 
     return (
         <tbody>

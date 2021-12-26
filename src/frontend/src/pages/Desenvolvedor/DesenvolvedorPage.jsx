@@ -1,7 +1,15 @@
+import { Table } from "react-materialize"
+import Body from "./components/Body"
+import Head from "./components/Head"
+
 export default function Desenvolvedor() {
     return (
         <div className="container">
-            <h1>Desenvolvedor</h1>
+            <h2>Desenolvedores</h2>
+            <Table className="striped">
+                <Head />
+                <Body />
+            </Table>
         </div>
     )
 }

@@ -12,7 +12,6 @@ export default function Row({ id, nivel, numeroDevs}) {
             <td>
                 <Acoes
                     id={id}
-                    forWho={"nivel"}
                 />
             </td>
         </tr>

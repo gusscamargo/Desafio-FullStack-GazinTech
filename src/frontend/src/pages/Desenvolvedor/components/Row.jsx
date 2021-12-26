@@ -11,7 +11,6 @@ export default function Row({id, nome, nivel, idade, sexo}) {
             <td>
                 <Acoes
                     id={id}
-                    forWho={"desenvolvedor"}
                 />
             </td>
         </tr>

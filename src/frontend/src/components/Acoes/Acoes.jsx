@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
 import { Button, Icon, Modal } from "react-materialize"
 
-export default function Acoes({id, forWho, modalView}) {
+export default function Acoes({id, modalView}) {
+    const { pathname } = window.location
+    
     return (
         <div className="btn-group">
             <Modal
@@ -10,7 +12,7 @@ export default function Acoes({id, forWho, modalView}) {
                 ]}
                 bottomSheet={false}
                 fixedFooter
-                header={forWho.charAt(0).toUpperCase() + forWho.slice(1)}
+                header={pathname.split("/")[1].charAt(0).toUpperCase() + pathname.split("/")[1].slice(1)}
                 id={`Modal-${id}`}
                 open={false}
                 options={{
@@ -42,7 +44,7 @@ export default function Acoes({id, forWho, modalView}) {
                 {modalView}
             </Modal>
             
-            <Link to={`/${forWho}/${id}`}>
+            <Link to={`${pathname}/${id}`}>
                 <Button
                     className="col l2 offset-l1 offset-s4 s4 orange accent-4"
                     node="button"

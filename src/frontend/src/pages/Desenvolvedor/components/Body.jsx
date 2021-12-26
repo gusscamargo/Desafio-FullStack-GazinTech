@@ -15,6 +15,7 @@ export default function Body() {
         setDevData(response.data.data)
     }
 
+    // Puxando dados da API
     useEffect(
         () => getNiveis(),
         []

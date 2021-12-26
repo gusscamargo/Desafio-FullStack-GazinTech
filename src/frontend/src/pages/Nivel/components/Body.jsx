@@ -27,6 +27,7 @@ export default function Body() {
                 nivelData.map((item, index) => 
                     <Row 
                         key={index}
+                        id={item.id}
                         nivel={item.nivel}
                         numeroDevs={item.numeroDevs} 
                     />

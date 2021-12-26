@@ -7,8 +7,11 @@ export default function Head({}) {
                 <th data-field="name">
                     Nome
                 </th>
-                <th data-field="name">
+                <th data-field="numberDevs">
                     Numero de Desenvolvedores
+                </th>
+                <th data-field="actions">
+                    Ações
                 </th>
             </tr>
         </thead>

@@ -1,11 +1,14 @@
 import { Navbar as NavbarMaterialize, NavItem, Icon} from "react-materialize"
 import  { NavLink } from "react-router-dom"
+import { connect } from "react-redux"
 
-const Navbar = ({desafio, linkedIn, github}) => {
+const Navbar = ({links}) => {
 
     const classNavbar = "indigo darken-4 z-depth-0"
     const classButtonsMenus = "btn-large waves-effect waves-light blue lighten-2"
     const classButtonsLinks = "btn waves-effect waves-light red darken-4"
+
+    const {github, linkedIn, desafio} = links
 
     return (
         <NavbarMaterialize
@@ -36,4 +39,10 @@ const Navbar = ({desafio, linkedIn, github}) => {
     )
 }
 
-export default Navbar
+const mapStateToProps = state => {
+    return {
+        links: state.links
+    }
+}
+
+export default connect(mapStateToProps)(Navbar)

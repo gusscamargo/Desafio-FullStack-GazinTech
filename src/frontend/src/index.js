@@ -4,10 +4,17 @@ import 'materialize-css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Redux e configuração
+import {Provider} from "react-redux"
+import configStore from "./store/store"
+const store = configStore()
+
 ReactDOM.render(
-  <React.StrictMode>
-      <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

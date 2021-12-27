@@ -1,23 +1,9 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
 import ListItens from "../../components/ListItens/ListItens"
+import { atualizarNiveis } from"../../store/actions/nivel"
 
-const API_URL = "http://127.0.0.1:4000"
-
-export default function Nivel() {
-    const [nivelData, setNivelData] = useState([])
-
-    const getNivelData = async () => {
-        const response = await axios.get(`${API_URL}/nivel/`)
-
-        setNivelData(response.data)
-    }
-
-    // Puxando dados da API
-    useEffect(
-        () => getNivelData(),
-        []
-    )
+const Nivel = ({niveis = []}) => {
 
     return (
         <div className="container">
@@ -27,8 +13,28 @@ export default function Nivel() {
                     "Nome",
                     "Numero de desenvolvedores"
                 ]}
-                data={nivelData}
+                data={
+                    niveis
+                }
             />
         </div>
     )
 }
+
+const mapDispatchToProp = dispatch => (
+    bindActionCreators(
+        atualizarNiveis(dispatch),
+        dispatch
+    )
+)
+
+const mapStateToProps = state => {
+    return {
+        niveis: state.niveis
+    }
+}
+
+export default connect(
+        mapStateToProps,
+        mapDispatchToProp
+    )(Nivel)

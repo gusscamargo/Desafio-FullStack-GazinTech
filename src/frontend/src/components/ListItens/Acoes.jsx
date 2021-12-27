@@ -34,7 +34,7 @@ export default function Acoes({id, modalView}) {
                         node="button"
                         tooltip="Ver mais"
                         tooltipOptions={{
-                            position: 'top'
+                            position: 'left'
                         }}
                         waves="light"
                         icon={<Icon>visibility</Icon>}
@@ -61,7 +61,7 @@ export default function Acoes({id, modalView}) {
                 node="button"
                 tooltip="Excluir"
                 tooltipOptions={{
-                    position: 'top'
+                    position: 'right'
                 }}
                 waves="light"
                 icon={<Icon>delete</Icon>}

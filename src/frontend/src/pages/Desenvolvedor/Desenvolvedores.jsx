@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import ListItens from '../../components/ListItens/ListItens'
+import Table from '../../components/Table'
 
 const URL_API = "http://127.0.0.1:4000"
 
@@ -22,13 +22,13 @@ export default function Desenvolvedor() {
     return (
         <div className="container">
             <h2>Desenolvedores</h2>
-            <ListItens 
+            <Table 
                 heads={[
                     "Nome",
                     "Nivel"
                 ]}>
                 {"Teste"}
-            </ListItens>
+            </Table>
 
         </div>
     )

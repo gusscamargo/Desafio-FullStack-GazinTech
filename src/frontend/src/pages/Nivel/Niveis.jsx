@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import ListItens from "../../components/ListItens/ListItens"
+import { TextInput } from "react-materialize"
+import Table from "../../components/Table"
 import Acoes from "../../components/Acoes"
 
 import { atualizarNiveis } from"../../store/actions/nivel"
@@ -10,14 +11,9 @@ const Nivel = ({niveis}) => {
     return (
         <div className="container">
             <h2>Niveis</h2>
-            <ListItens
-                heads={[
-                    "Nome",
-                    "Numero de desenvolvedores"
-                ]}>
-                
-                    {
-                        niveis.map((item, index) =>(
+            <Table heads={["Nome", "Numero de desenvolvedores"]}>
+                {
+                    niveis.map((item, index) =>(
                         <tr>
                             <td>
                                 {item.nivel}
@@ -28,14 +24,26 @@ const Nivel = ({niveis}) => {
                             <td>
                                 <Acoes
                                     id={item.id}
+                                    modalView={
+                                        <div className="container">
+                                            <h5><strong>Nome:</strong> {item.nivel}</h5>
+                                            <h5><strong>Numero de desenvolvedores pertencentes ao nivel {item.nivel}:</strong> {item.numeroDevs}</h5>
+                                        </div>
+                                    }
                                 />
                             </td>
                         </tr>
-                        ))
-                    }
-            </ListItens>
+                    ))
+                }
+            </Table>
         </div>
     )
+}
+
+const mapStateToProps = state => {
+    return {
+        niveis: state.niveis
+    }
 }
 
 const mapDispatchToProp = dispatch => (
@@ -44,12 +52,6 @@ const mapDispatchToProp = dispatch => (
         dispatch
     )
 )
-
-const mapStateToProps = state => {
-    return {
-        niveis: state.niveis
-    }
-}
 
 export default connect(
         mapStateToProps,

@@ -1,6 +1,5 @@
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import { TextInput } from "react-materialize"
 import Table from "../../components/Table"
 import Acoes from "../../components/Acoes"
 

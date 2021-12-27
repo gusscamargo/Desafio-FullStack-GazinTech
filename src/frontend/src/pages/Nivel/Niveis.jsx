@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux"
 import ListItens from "../../components/ListItens/ListItens"
 import { atualizarNiveis } from"../../store/actions/nivel"
 
-const Nivel = ({niveis = []}) => {
+const Nivel = ({niveis}) => {
 
     return (
         <div className="container">

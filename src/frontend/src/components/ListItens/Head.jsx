@@ -5,10 +5,11 @@ export default function Head({heads}) {
         <thead>
             <tr>
                 {
-                    heads.map((item, index) => 
-                        <th key={index}>
-                            {item}
-                        </th>
+                    heads.map((item, index) => (
+                            <th key={index}>
+                                {item}
+                            </th>
+                        )
                     )
                 }
                 <th>

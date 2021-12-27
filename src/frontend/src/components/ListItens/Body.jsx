@@ -4,11 +4,12 @@ export default function Body({data}) {
     return (
         <tbody>
             {
-                data.map((item, index) => 
-                    <Row 
-                        key={index}
-                        data={item}
-                    />
+                data.map((item, index) => (
+                        <Row
+                            key={index}
+                            data={item}
+                        />
+                    )
                 )
             }
         </tbody>

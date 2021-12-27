@@ -26,9 +26,10 @@ export default function Desenvolvedor() {
                 heads={[
                     "Nome",
                     "Nivel"
-                ]}
-                data={devData}
-            />
+                ]}>
+                {"Teste"}
+            </ListItens>
+
         </div>
     )
 }

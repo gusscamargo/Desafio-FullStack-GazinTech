@@ -1,17 +1,7 @@
-import Row from './Row'
-
-export default function Body({data}) {  
+export default function Body({children}) {  
     return (
         <tbody>
-            {
-                data.map((item, index) => (
-                        <Row
-                            key={index}
-                            data={item}
-                        />
-                    )
-                )
-            }
+           {children}
         </tbody>
     )
 }

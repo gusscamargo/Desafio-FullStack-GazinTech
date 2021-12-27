@@ -3,15 +3,15 @@ import { Table } from "react-materialize"
 import Head from './Head'
 import Body from './Body'
 
-function ListItens({heads, data}) {
+function ListItens({ heads, children}) {
     return (
         <Table className="striped">
             <Head 
                 heads={heads}
             />
-            <Body
-                data={data}
-            />
+            <Body>
+                {children}
+            </Body>
         </Table>
     )
 }

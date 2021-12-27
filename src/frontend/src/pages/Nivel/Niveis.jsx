@@ -1,6 +1,8 @@
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import ListItens from "../../components/ListItens/ListItens"
+import Acoes from "../../components/Acoes"
+
 import { atualizarNiveis } from"../../store/actions/nivel"
 
 const Nivel = ({niveis}) => {
@@ -12,11 +14,26 @@ const Nivel = ({niveis}) => {
                 heads={[
                     "Nome",
                     "Numero de desenvolvedores"
-                ]}
-                data={
-                    niveis
-                }
-            />
+                ]}>
+                
+                    {
+                        niveis.map((item, index) =>(
+                        <tr>
+                            <td>
+                                {item.nivel}
+                            </td>
+                            <td>
+                                {item.numeroDevs}
+                            </td>
+                            <td>
+                                <Acoes
+                                    id={item.id}
+                                />
+                            </td>
+                        </tr>
+                        ))
+                    }
+            </ListItens>
         </div>
     )
 }

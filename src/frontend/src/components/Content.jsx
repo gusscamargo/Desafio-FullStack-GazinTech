@@ -1,8 +1,8 @@
 import {Route, Routes} from "react-router-dom"
 
 import Home from "../pages/Home"
-import Niveis from "../pages/Nivel/Niveis"
-import Desenvolvedores from "../pages/Desenvolvedor/Desenvolvedores"
+import Niveis from "../pages/Nivel"
+import Desenvolvedores from "../pages/Desenvolvedor"
 import NotFound404 from "../pages/Error/NotFound404Page"
 
 export default function Content() {

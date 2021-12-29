@@ -1,8 +1,8 @@
 import {Route, Routes} from "react-router-dom"
 
 import Home from "../pages/Home"
-import Nivel from "../pages/Nivel/Niveis"
-import Desenvolvedor from "../pages/Desenvolvedor/Desenvolvedores"
+import Niveis from "../pages/Nivel/Niveis"
+import Desenvolvedores from "../pages/Desenvolvedor/Desenvolvedores"
 import NotFound404 from "../pages/Error/NotFound404Page"
 
 export default function Content() {
@@ -10,8 +10,8 @@ export default function Content() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/nivel" element={<Nivel />} />
-            <Route path="/desenvolvedor" element={<Desenvolvedor />} />
+            <Route path="/nivel" element={<Niveis />} /> 
+            <Route path="/desenvolvedor" element={<Desenvolvedores />} />
             <Route path="*" element={<NotFound404 />} />
           </Routes>
         </main>

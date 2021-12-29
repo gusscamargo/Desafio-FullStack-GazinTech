@@ -1,9 +1,28 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Button, Icon, Modal } from "react-materialize"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function Acoes({id, modalView}) {
+
+export default function Acoes({id, modalView, blockDeleteButton = false}) {
     const { pathname } = useLocation()
+    let deleteButtonToast = () => {}
+
+    const deleteButtonAction = () => {
+        if (blockDeleteButton){
+            console.log("toast")
+            toast.error('Há desenvolvedores cadastrados com este nivel', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+        }
+    }
 
     return (
         <div className="btn-group">
@@ -66,7 +85,9 @@ export default function Acoes({id, modalView}) {
                 }}
                 waves="light"
                 icon={<Icon>delete</Icon>}
+                onClick={ deleteButtonAction }
             />
+            <ToastContainer />
         </div>
     )
 }

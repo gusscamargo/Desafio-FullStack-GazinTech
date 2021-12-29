@@ -1,14 +1,16 @@
-import { connect } from "react-redux"
-import { bindActionCreators } from "redux"
-import { Autocomplete, Row, Select} from 'react-materialize'
+import { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Textarea, Autocomplete, Row, Select } from 'react-materialize'
+
 
 // Componentes
-import Table from "../../components/Table"
+import Table from '../../components/Table/Table'
 import Acoes from "../../components/Acoes"
-import AddButton from "../../components/AddButton"
+import AddButton from '../../components/AddButton'
 
 // Ferramentas
-import { atualizarNiveis } from"../../store/actions/nivel"
+import { atualizarDesenvolvedores } from '../../store/actions/desenvolvedor'
 
 
 const gerenciarDados = data => {
@@ -16,54 +18,47 @@ const gerenciarDados = data => {
         return (
             data.map((item, index) => (
                 <tr key={index}>
-                    <td>
-                        {item.nivel}
-                    </td>
-                    <td>
-                        {item.numeroDevs}
-                    </td>
+                    <td>{item.nome}</td>
+                    <td>{item.Nivel.nivel}</td>
                     <td>
                         <Acoes
                             id={item.id}
                             modalView={
-                                <div className="container">
-                                    <h5><strong>Nome:</strong> {item.nivel}</h5>
-                                    <h5><strong>Numero de desenvolvedores que são deste nivel:</strong> {item.numeroDevs}</h5>
+                                <div className='container'>
+                                    <h5><strong>Nome:</strong> {item.nome}</h5>
+                                    <h5><strong>Sexo:</strong> {item.sexo}</h5>
+                                    <h5><strong>Data de nascimento:</strong> {item.datanascimento}</h5>
+                                    <h5><strong>Idade:</strong> {item.idade}</h5>
+                                    <h5><strong>Nivel:</strong> {item.Nivel.nivel}</h5>
+                                    <h5><strong>Hobby:</strong> {item.hobby === "" ? "Hobbies não informados" : ""}</h5>
+                                    {item.hobby !== "" ? <Textarea disabled={true} value={item.hobby} /> : ""}
                                 </div>
                             }
-                            blockDeleteButton={ item.numeroDevs > 0 }
                         />
                     </td>
                 </tr>
             ))
         )
-    }else{
-        return (
-            <tr>
-                <td>
-                    Não há dados
-                </td>
-            </tr>
-        )
     }
 }
 
 // Função principal
-const Nivel = ({ niveis, nivelNameList}) => {
+const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
+
     return (
         <div>
             <div className="container">
                 <Row>
-                    <h2>Niveis</h2>
+                    <h2>Desenolvedores</h2>
                 </Row>
                 <Row>
                     <Autocomplete
                         id="search-dev"
                         options={{
-                            data: nivelNameList
+                            data: devNameList
                         }}
                         placeholder="Escreva aqui"
-                        title='Procurar nivel'
+                        title='Procurar desenvolvedor'
                         s={8}
                     />
                     <Select
@@ -96,14 +91,14 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         >
                             Escolha sua opção
                         </option>
-                        <option value="nenhuma">
+                        <option value="none">
                             Nenhuma
                         </option>
                         <option value="nome">
                             Nome
                         </option>
-                        <option value="numeroDevs">
-                            Numero de desenvolvedores
+                        <option value="nivel">
+                            Nivel
                         </option>
                     </Select>
                     <Select
@@ -139,10 +134,9 @@ const Nivel = ({ niveis, nivelNameList}) => {
                     </Select>
                 </Row>
 
-                <Table heads={["Nome", "Numero de desenvolvedores"]}>
-                    {
-                        gerenciarDados(niveis)
-                    }
+                <Table
+                    heads={["Nome", "Nivel"]}>
+                    { gerenciarDados(desenvolvedores) }
                 </Table>
             </div>
             <AddButton />
@@ -150,40 +144,39 @@ const Nivel = ({ niveis, nivelNameList}) => {
     )
 }
 
-const getNameNiveis = data => {
+const getNameDevs = data => {
     if (data.length === 0) return {}
 
-    // Niveis final list
-    const niveis = {}
+    // Devs final list
+    const devs = {}
 
     data.map(
         (item, index) => {
-            niveis[item.nivel] = null
+            devs[item.nome] = null
         }
     )
 
-    return niveis
+    return devs
 }
 
 const mapStateToProps = state => {
-    const {niveis} = state
-    // const nivelNameList = {}
-    const nivelNameList = getNameNiveis(niveis)
+    const {desenvolvedores} = state
+    const devNameList = getNameDevs(desenvolvedores)
 
     return {
-        niveis: niveis,
-        nivelNameList: nivelNameList
+        desenvolvedores: desenvolvedores,
+        devNameList: devNameList
     }
 }
 
 const mapDispatchToProp = dispatch => (
     bindActionCreators(
-        atualizarNiveis(dispatch),
+        atualizarDesenvolvedores(dispatch),
         dispatch
     )
 )
 
 export default connect(
-        mapStateToProps,
-        mapDispatchToProp
-    )(Nivel)
+    mapStateToProps,
+    mapDispatchToProp
+)(Desenvolvedor)

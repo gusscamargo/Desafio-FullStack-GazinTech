@@ -7,11 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Acoes({id, modalView, blockDeleteButton = false}) {
     const { pathname } = useLocation()
+    
     let deleteButtonToast = () => {}
 
     const deleteButtonAction = () => {
         if (blockDeleteButton){
-            console.log("toast")
             toast.error('Há desenvolvedores cadastrados com este nivel', {
                     position: "top-right",
                     autoClose: 5000,

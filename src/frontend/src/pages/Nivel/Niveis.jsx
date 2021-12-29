@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import { Autocomplete, Row } from 'react-materialize'
+import { Autocomplete, Row, Select} from 'react-materialize'
 
 // Componentes
 import Table from "../../components/Table"
@@ -63,8 +63,48 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         }}
                         placeholder="Escreva aqui"
                         title='Procurar nivel'
-                        s={12}
+                        s={9}
                     />
+                    <Select
+                        id="select-nivel"
+                        multiple={false}
+                        label='Escolha ordenação'
+                        onChange={function noRefCheck() { }}
+                        options={{
+                            classes: '',
+                            dropdownOptions: {
+                                alignment: 'left',
+                                autoTrigger: true,
+                                closeOnClick: true,
+                                constrainWidth: true,
+                                coverTrigger: true,
+                                hover: false,
+                                inDuration: 150,
+                                onCloseEnd: null,
+                                onCloseStart: null,
+                                onOpenEnd: null,
+                                onOpenStart: null,
+                                outDuration: 250
+                            }
+                        }}
+                        s={3}
+                    >
+                        <option
+                            disabled
+                            value=""
+                        >
+                            Escolha sua opção
+                        </option>
+                        <option value="0">
+                            Nenhuma
+                        </option>
+                        <option value="1">
+                            Nome
+                        </option>
+                        <option value="2">
+                            Numero de desenvolvedores
+                        </option>
+                    </Select>
                 </Row>
 
                 <Table heads={["Nome", "Numero de desenvolvedores"]}>

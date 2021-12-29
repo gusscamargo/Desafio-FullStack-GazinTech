@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Textarea, Autocomplete, Row } from 'react-materialize'
+import { Textarea, Autocomplete, Row, Select } from 'react-materialize'
 
 
 // Componentes
@@ -59,8 +59,48 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
                         }}
                         placeholder="Escreva aqui"
                         title='Procurar desenvolvedor'
-                        s={12}
+                        s={9}
                     />
+                    <Select
+                        id="select-nivel"
+                        multiple={false}
+                        label='Escolha ordenação'
+                        onChange={function noRefCheck() { }}
+                        options={{
+                            classes: '',
+                            dropdownOptions: {
+                                alignment: 'left',
+                                autoTrigger: true,
+                                closeOnClick: true,
+                                constrainWidth: true,
+                                coverTrigger: true,
+                                hover: false,
+                                inDuration: 150,
+                                onCloseEnd: null,
+                                onCloseStart: null,
+                                onOpenEnd: null,
+                                onOpenStart: null,
+                                outDuration: 250
+                            }
+                        }}
+                        s={3}
+                    >
+                        <option
+                            disabled
+                            value=""
+                        >
+                            Escolha sua opção
+                        </option>
+                        <option value="0">
+                            Nenhuma
+                        </option>
+                        <option value="1">
+                            Nome
+                        </option>
+                        <option value="2">
+                            Nivel
+                        </option>
+                    </Select>
                 </Row>
 
                 <Table

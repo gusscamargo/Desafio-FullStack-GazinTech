@@ -11,7 +11,7 @@ import AddButton from "../../components/AddButton"
 import { atualizarNiveis } from"../../store/actions/nivel"
 
 
-const validacaoSeHaNiveisRegistrados = data => {
+const gerenciarDados = data => {
     if (data.length > 0){
         return (
             data.map((item, index) => (
@@ -140,7 +140,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
 
                 <Table heads={["Nome", "Numero de desenvolvedores"]}>
                     {
-                        validacaoSeHaNiveisRegistrados(niveis)
+                        gerenciarDados(niveis)
                     }
                 </Table>
             </div>

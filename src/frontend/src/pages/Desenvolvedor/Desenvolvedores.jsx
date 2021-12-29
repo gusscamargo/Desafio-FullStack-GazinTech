@@ -13,7 +13,7 @@ import AddButton from '../../components/AddButton'
 import { atualizarDesenvolvedores } from '../../store/actions/desenvolvedor'
 
 
-const verificarSeHaDesenvolvedores = data => {
+const gerenciarDados = data => {
     if (data.length > 0){
         return (
             data.map((item, index) => (
@@ -136,7 +136,7 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
 
                 <Table
                     heads={["Nome", "Nivel"]}>
-                    {verificarSeHaDesenvolvedores(desenvolvedores)}
+                    {gerenciarDados(desenvolvedores)}
                 </Table>
             </div>
             <AddButton />

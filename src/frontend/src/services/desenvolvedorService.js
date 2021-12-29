@@ -18,7 +18,7 @@ Service.update = data => {
     return bd.put("/desenvolvedor/edit", data)
 }
 
-Service.delete = () => {
+Service.delete = data => {
     return bd.delete("/desenvolvedor/delete", data)
 }
 

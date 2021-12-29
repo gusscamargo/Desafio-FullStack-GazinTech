@@ -1,1 +1,6 @@
+// Pacote Nivel
 export const ATUALIZAR_NIVEL_DATA = "ATUALIZAR_NIVEL_DATA"
+
+
+// Pacote deenvolvedor
+export const ATUALIZAR_DESENVOLVEDOR_DATA = "ATUALIZAR_DESENVOLVEDOR_DATA"

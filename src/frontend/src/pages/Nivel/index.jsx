@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { Autocomplete, Row, Select} from 'react-materialize'
@@ -50,6 +51,23 @@ const gerenciarDados = data => {
 
 // Função principal
 const Nivel = ({ niveis, nivelNameList}) => {
+
+    const [nivel, setNivel] = useState("")
+    const [data, setData] = useState(niveis)
+    const selectOrdenacao = useRef("")
+    const selectFormaOrndenacao = useRef("")
+
+
+    useEffect(
+        () => setData(niveis),
+        [niveis]
+    )
+
+    const ordenar = () => {
+        
+    }
+
+
     return (
         <div>
             <div className="container">
@@ -65,12 +83,21 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         placeholder="Escreva aqui"
                         title='Procurar nivel'
                         s={8}
+                        value={nivel}
+                        onChange={
+                            e => setNivel(e.target.value)
+                        }
                     />
                     <Select
                         id="select-nivel"
                         multiple={false}
                         label='Escolha ordenação'
-                        onChange={function noRefCheck() { }}
+                        onChange={
+                            e => { 
+                                selectOrdenacao(e)
+                            }
+                        }
+
                         options={{
                             classes: '',
                             dropdownOptions: {
@@ -88,12 +115,9 @@ const Nivel = ({ niveis, nivelNameList}) => {
                                 outDuration: 250
                             }
                         }}
-                        s={2}
+                        s={2}                    
                     >
-                        <option
-                            disabled
-                            value=""
-                        >
+                        <option disabled value="">
                             Escolha sua opção
                         </option>
                         <option value="nenhuma">
@@ -110,7 +134,11 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         id="select-ordem"
                         multiple={false}
                         label='Escolha a forma'
-                        onChange={function noRefCheck() { }}
+                        onChange={
+                            e => {
+                                selectFormaOrndenacao(e.target.value)
+                            }
+                        }
                         options={{
                             classes: '',
                             dropdownOptions: {
@@ -141,7 +169,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
 
                 <Table heads={["Nome", "Numero de desenvolvedores"]}>
                     {
-                        gerenciarDados(niveis)
+                        gerenciarDados(data)
                     }
                 </Table>
             </div>

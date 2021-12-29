@@ -47,7 +47,7 @@ const validacaoSeHaNiveisRegistrados = data => {
     }
 }
 
-
+// Função principal
 const Nivel = ({ niveis, nivelNameList}) => {
     return (
         <div>

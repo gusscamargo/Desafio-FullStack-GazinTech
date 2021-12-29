@@ -42,8 +42,8 @@ const verificarSeHaDesenvolvedores = data => {
     }
 }
 
+// Função principal
 const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
-
 
     return (
         <div>

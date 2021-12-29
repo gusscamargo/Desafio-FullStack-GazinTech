@@ -1,5 +1,6 @@
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
+import { Autocomplete, Row } from 'react-materialize'
 import Table from "../../components/Table"
 import Acoes from "../../components/Acoes"
 
@@ -43,10 +44,24 @@ const validacaoSeHaNiveisRegistrados = data => {
 }
 
 
-const Nivel = ({niveis}) => {
+const Nivel = ({ niveis, nivelNameList}) => {
     return (
         <div className="container">
-            <h2>Niveis</h2>
+            <Row>
+                <h2>Niveis</h2>
+            </Row>
+            <Row>
+                <Autocomplete
+                    id="search-dev"
+                    options={{
+                        data: nivelNameList
+                    }}
+                    placeholder="Escreva aqui"
+                    title='Procurar nivel'
+                    s={12}
+                />
+            </Row>
+
             <Table heads={["Nome", "Numero de desenvolvedores"]}>
                 {
                     validacaoSeHaNiveisRegistrados(niveis)
@@ -56,9 +71,29 @@ const Nivel = ({niveis}) => {
     )
 }
 
+const getNameNiveis = data => {
+    if (data.length === 0) return {}
+
+    // Niveis final list
+    const niveis = {}
+
+    data.map(
+        (item, index) => {
+            niveis[item.nivel] = null
+        }
+    )
+
+    return niveis
+}
+
 const mapStateToProps = state => {
+    const {niveis} = state
+    // const nivelNameList = {}
+    const nivelNameList = getNameNiveis(niveis)
+
     return {
-        niveis: state.niveis
+        niveis: niveis,
+        nivelNameList: nivelNameList
     }
 }
 

@@ -95,13 +95,13 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         >
                             Escolha sua opção
                         </option>
-                        <option value="0">
+                        <option value="nenhuma">
                             Nenhuma
                         </option>
-                        <option value="1">
+                        <option value="nome">
                             Nome
                         </option>
-                        <option value="2">
+                        <option value="numeroDevs">
                             Numero de desenvolvedores
                         </option>
                     </Select>

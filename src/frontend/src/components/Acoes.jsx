@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from 'react-router-dom'
 import { Button, Icon, Modal } from "react-materialize"
 
+
 export default function Acoes({id, modalView}) {
-    const { pathname } = window.location
+    const { pathname } = useLocation()
 
     return (
         <div className="btn-group">

@@ -63,7 +63,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         }}
                         placeholder="Escreva aqui"
                         title='Procurar nivel'
-                        s={9}
+                        s={8}
                     />
                     <Select
                         id="select-nivel"
@@ -87,7 +87,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
                                 outDuration: 250
                             }
                         }}
-                        s={3}
+                        s={2}
                     >
                         <option
                             disabled
@@ -103,6 +103,37 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         </option>
                         <option value="2">
                             Numero de desenvolvedores
+                        </option>
+                    </Select>
+                    <Select
+                        id="select-ordem"
+                        multiple={false}
+                        label='Escolha a forma'
+                        onChange={function noRefCheck() { }}
+                        options={{
+                            classes: '',
+                            dropdownOptions: {
+                                alignment: 'left',
+                                autoTrigger: true,
+                                closeOnClick: true,
+                                constrainWidth: true,
+                                coverTrigger: true,
+                                hover: false,
+                                inDuration: 150,
+                                onCloseEnd: null,
+                                onCloseStart: null,
+                                onOpenEnd: null,
+                                onOpenStart: null,
+                                outDuration: 250
+                            }
+                        }}
+                        s={2}
+                    >
+                        <option value="crescente">
+                            Crescente
+                        </option>
+                        <option value="decrescente">
+                            Decrescente
                         </option>
                     </Select>
                 </Row>

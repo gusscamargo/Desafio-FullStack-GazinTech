@@ -59,7 +59,7 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
                         }}
                         placeholder="Escreva aqui"
                         title='Procurar desenvolvedor'
-                        s={9}
+                        s={8}
                     />
                     <Select
                         id="select-nivel"
@@ -83,7 +83,7 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
                                 outDuration: 250
                             }
                         }}
-                        s={3}
+                        s={2}
                     >
                         <option
                             disabled
@@ -91,14 +91,45 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
                         >
                             Escolha sua opção
                         </option>
-                        <option value="0">
+                        <option value="none">
                             Nenhuma
                         </option>
-                        <option value="1">
+                        <option value="nome">
                             Nome
                         </option>
-                        <option value="2">
+                        <option value="nivel">
                             Nivel
+                        </option>
+                    </Select>
+                    <Select
+                        id="select-ordem"
+                        multiple={false}
+                        label='Escolha a forma'
+                        onChange={function noRefCheck() { }}
+                        options={{
+                            classes: '',
+                            dropdownOptions: {
+                                alignment: 'left',
+                                autoTrigger: true,
+                                closeOnClick: true,
+                                constrainWidth: true,
+                                coverTrigger: true,
+                                hover: false,
+                                inDuration: 150,
+                                onCloseEnd: null,
+                                onCloseStart: null,
+                                onOpenEnd: null,
+                                onOpenStart: null,
+                                outDuration: 250
+                            }
+                        }}
+                        s={2}
+                    >
+                        <option value="crescente">
+                            Crescente
+                        </option>
+                        <option value="decrescente">
+                            Decrescente
                         </option>
                     </Select>
                 </Row>

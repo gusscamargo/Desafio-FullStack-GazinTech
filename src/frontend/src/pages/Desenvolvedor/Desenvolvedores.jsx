@@ -1,50 +1,81 @@
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { atualizarDesenvolvedores } from '../../store/actions/desenvolvedor'
 
 import Table from '../../components/Table'
 import Acoes from "../../components/Acoes"
-import { Textarea } from 'react-materialize'
+import { Textarea, Autocomplete, Row } from 'react-materialize'
 
 
 const verificarSeHaDesenvolvedores = data => {
-    console.log(data)
     if (data.length > 0){
         return (
             data.map((item, index) => (
-                <tr>
+                <tr key={index}>
                     <td>{item.nome}</td>
                     <td>{item.Nivel.nivel}</td>
-                    <Acoes
-                        id={item.id}
-                        modalView={
-                            <div className='container'>
-                                <h5><strong>Nome:</strong> {item.nome}</h5>
-                                <h5><strong>Sexo:</strong> {item.sexo}</h5>
-                                <h5><strong>Data de nascimento:</strong> {item.datanascimento}</h5>
-                                <h5><strong>Idade:</strong> {item.idade}</h5>
-                                <h5><strong>Nivel:</strong> {item.Nivel.nivel}</h5>
-                                <h5><strong>Hobby:</strong> {item.hobby === "" ? "Hobbies não informados" : ""}</h5>
-                                {item.hobby !== "" ? <Textarea disabled={true} value={item.hobby} /> : ""}
-                            </div>
-                        }
-                    />
+                    <td>
+                        <Acoes
+                            id={item.id}
+                            modalView={
+                                <div className='container'>
+                                    <h5><strong>Nome:</strong> {item.nome}</h5>
+                                    <h5><strong>Sexo:</strong> {item.sexo}</h5>
+                                    <h5><strong>Data de nascimento:</strong> {item.datanascimento}</h5>
+                                    <h5><strong>Idade:</strong> {item.idade}</h5>
+                                    <h5><strong>Nivel:</strong> {item.Nivel.nivel}</h5>
+                                    <h5><strong>Hobby:</strong> {item.hobby === "" ? "Hobbies não informados" : ""}</h5>
+                                    {/* {item.hobby !== "" ? <Textarea disabled={true} value={item.hobby} /> : ""} */}
+                                </div>
+                            }
+                        />
+                    </td>
                 </tr>
             ))
         )
     }
 }
 
+const getNameDevs = data => {
+    if(data.length === 0) return {}
 
-const Desenvolvedor = ({ desenvolvedores }) => {
+    // Devs final list
+    const devs = {}
+
+    data.map(
+        (item, index) => {
+            devs[item.nome] = null
+        }
+    )
+
+    return devs
+}
+
+
+
+const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
+
+
     return (
         <div className="container">
-            <h2>Desenolvedores</h2>
+            <Row>
+                <h2>Desenolvedores</h2>
+            </Row>
+            <Row>
+                <Autocomplete
+                    id="search-dev"
+                    options={{
+                        data: devNameList
+                    }}
+                    placeholder="Escreva aqui"
+                    title='Procurar desenvolvedor'
+                    s={12}
+                />
+            </Row>
+            
             <Table
-                heads={[
-                    "Nome",
-                    "Nivel"
-                ]}>
+                heads={["Nome","Nivel"]}>
                 { verificarSeHaDesenvolvedores(desenvolvedores) }
             </Table>
         </div>
@@ -53,8 +84,12 @@ const Desenvolvedor = ({ desenvolvedores }) => {
 
 
 const mapStateToProps = state => {
+    const {desenvolvedores} = state
+    const devNameList = getNameDevs(desenvolvedores)
+
     return {
-        desenvolvedores: state.desenvolvedores
+        desenvolvedores: desenvolvedores,
+        devNameList: devNameList
     }
 }
 

@@ -26,7 +26,7 @@ const verificarSeHaDesenvolvedores = data => {
                                     <h5><strong>Idade:</strong> {item.idade}</h5>
                                     <h5><strong>Nivel:</strong> {item.Nivel.nivel}</h5>
                                     <h5><strong>Hobby:</strong> {item.hobby === "" ? "Hobbies não informados" : ""}</h5>
-                                    {/* {item.hobby !== "" ? <Textarea disabled={true} value={item.hobby} /> : ""} */}
+                                    {item.hobby !== "" ? <Textarea disabled={true} value={item.hobby} /> : ""}
                                 </div>
                             }
                         />
@@ -36,23 +36,6 @@ const verificarSeHaDesenvolvedores = data => {
         )
     }
 }
-
-const getNameDevs = data => {
-    if(data.length === 0) return {}
-
-    // Devs final list
-    const devs = {}
-
-    data.map(
-        (item, index) => {
-            devs[item.nome] = null
-        }
-    )
-
-    return devs
-}
-
-
 
 const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
 
@@ -82,6 +65,20 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
     )
 }
 
+const getNameDevs = data => {
+    if (data.length === 0) return {}
+
+    // Devs final list
+    const devs = {}
+
+    data.map(
+        (item, index) => {
+            devs[item.nome] = null
+        }
+    )
+
+    return devs
+}
 
 const mapStateToProps = state => {
     const {desenvolvedores} = state

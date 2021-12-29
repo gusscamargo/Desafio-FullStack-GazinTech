@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { atualizarDesenvolvedores } from '../../store/actions/desenvolvedor'
+import { Textarea, Autocomplete, Row } from 'react-materialize'
 
+
+// Componentes
 import Table from '../../components/Table'
 import Acoes from "../../components/Acoes"
-import { Textarea, Autocomplete, Row } from 'react-materialize'
+import AddButton from '../../components/AddButton'
+
+// Ferramentas
+import { atualizarDesenvolvedores } from '../../store/actions/desenvolvedor'
 
 
 const verificarSeHaDesenvolvedores = data => {
@@ -41,26 +46,29 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
 
 
     return (
-        <div className="container">
-            <Row>
-                <h2>Desenolvedores</h2>
-            </Row>
-            <Row>
-                <Autocomplete
-                    id="search-dev"
-                    options={{
-                        data: devNameList
-                    }}
-                    placeholder="Escreva aqui"
-                    title='Procurar desenvolvedor'
-                    s={12}
-                />
-            </Row>
-            
-            <Table
-                heads={["Nome","Nivel"]}>
-                { verificarSeHaDesenvolvedores(desenvolvedores) }
-            </Table>
+        <div>
+            <div className="container">
+                <Row>
+                    <h2>Desenolvedores</h2>
+                </Row>
+                <Row>
+                    <Autocomplete
+                        id="search-dev"
+                        options={{
+                            data: devNameList
+                        }}
+                        placeholder="Escreva aqui"
+                        title='Procurar desenvolvedor'
+                        s={12}
+                    />
+                </Row>
+
+                <Table
+                    heads={["Nome", "Nivel"]}>
+                    {verificarSeHaDesenvolvedores(desenvolvedores)}
+                </Table>
+            </div>
+            <AddButton />
         </div>
     )
 }

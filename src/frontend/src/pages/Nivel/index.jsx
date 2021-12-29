@@ -103,7 +103,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
                             Nome
                         </option>
                         <option value="numeroDevs">
-                            Numero de desenvolvedores
+                            Numero devs
                         </option>
                     </Select>
                     <Select
@@ -167,12 +167,13 @@ const getNameNiveis = data => {
 
 const mapStateToProps = state => {
     const {niveis} = state
-    // const nivelNameList = {}
-    const nivelNameList = getNameNiveis(niveis)
+    const data = typeof niveis.data === 'undefined' ? [] : niveis.data
+    const nivelNameList = getNameNiveis(data)
 
     return {
-        niveis: niveis,
-        nivelNameList: nivelNameList
+        niveis: data,
+        nivelNameList: nivelNameList,
+        status: niveis.status
     }
 }
 

@@ -161,10 +161,13 @@ const getNameDevs = data => {
 
 const mapStateToProps = state => {
     const {desenvolvedores} = state
-    const devNameList = getNameDevs(desenvolvedores)
+    const data = typeof desenvolvedores.data === "undefined" ? [] : desenvolvedores.data
+
+    const devNameList = getNameDevs(data)
 
     return {
-        desenvolvedores: desenvolvedores,
+        desenvolvedores: data,
+        status: desenvolvedores.status,
         devNameList: devNameList
     }
 }

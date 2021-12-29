@@ -51,7 +51,7 @@ controller.getOne = async (req, res, next) => {
             }
         })
         
-        res.send(200, nivel)
+        res.send(200, nivel === null ? [] : nivel)
     }catch(err){
         res.send(400, {
             message: err.name

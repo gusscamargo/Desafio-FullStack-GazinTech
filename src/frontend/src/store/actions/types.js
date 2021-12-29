@@ -1,5 +1,6 @@
 // Pacote Nivel
 export const ATUALIZAR_NIVEL_DATA = "ATUALIZAR_NIVEL_DATA"
+export const GET_NIVEL_ID = "GET_NIVEL_ID"
 
 
 // Pacote deenvolvedor

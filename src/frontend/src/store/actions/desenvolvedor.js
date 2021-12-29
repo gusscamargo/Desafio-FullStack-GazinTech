@@ -6,7 +6,7 @@ export const atualizarDesenvolvedores = async dispatch => {
         const res = await bd.getAll()
         dispatch({
             type: ATUALIZAR_DESENVOLVEDOR_DATA,
-            payload: res.data
+            payload: res
         })
     }catch(err){
         return Promise.reject(err)

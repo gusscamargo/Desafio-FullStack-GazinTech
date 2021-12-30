@@ -77,6 +77,11 @@ const Nivel = ({ niveis, nivelNameList}) => {
         [selectOrdenacao, selectFormaOrndenacao]
     )
 
+    useEffect(
+        () => searchByString(searchNivel),
+        [searchNivel]
+    )
+
     const ordenacao = () => {
         if (selectOrdenacao === "nenhuma"){
             setPreenchimentoTable(gerenciarDados(
@@ -94,6 +99,19 @@ const Nivel = ({ niveis, nivelNameList}) => {
                 ))
             }
         }
+    }
+
+    const searchByString = currentSearch => {
+        const d = [...data]
+        const result = []
+
+        d.map((item, indexo) => {
+            if (item.nivel.search(currentSearch) > -1) result.push(item)
+        })
+
+        setPreenchimentoTable(gerenciarDados(
+            result
+        ))
     }
 
     

@@ -52,22 +52,43 @@ const gerenciarDados = data => {
 // Função principal
 const Nivel = ({ niveis, nivelNameList}) => {
 
-    const [nivel, setNivel] = useState("")
+    const [searchNivel, setSearchNivel] = useState("")
     const [data, setData] = useState(niveis)
-    const selectOrdenacao = useRef("")
-    const selectFormaOrndenacao = useRef("")
+    const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
+    const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
+    const [preenchimentoTable, setPreenchimentoTable] = useState(gerenciarDados(data))
 
 
     useEffect(
-        () => setData(niveis),
+        () => {
+            setData(niveis)
+            setPreenchimentoTable(gerenciarDados(data))
+        },
         [niveis]
     )
 
-    const ordenar = () => {
-        
+    useEffect(
+        () => {
+            ordenacao()
+            setPreenchimentoTable(gerenciarDados(data))
+        },
+        [selectOrdenacao, selectFormaOrndenacao]
+    )
+
+    const ordenacao = () => {
+        if (selectOrdenacao === "nenhuma"){
+            setData(data.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)))
+        }else{
+            if (selectFormaOrndenacao === "crescente") {
+                setData(data.sort((a, b) => (a[selectOrdenacao] > b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] > a[selectOrdenacao]) ? -1 : 0)))
+
+            } else {
+                setData(data.sort((a, b) => (a[selectOrdenacao] < b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] < a[selectOrdenacao]) ? -1 : 0)))
+            }
+        }
     }
 
-
+    
     return (
         <div>
             <div className="container">
@@ -83,9 +104,11 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         placeholder="Escreva aqui"
                         title='Procurar nivel'
                         s={8}
-                        value={nivel}
+                        value={
+                            searchNivel
+                        }
                         onChange={
-                            e => setNivel(e.target.value)
+                            e => setSearchNivel(e.target.value)
                         }
                     />
                     <Select
@@ -94,7 +117,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         label='Escolha ordenação'
                         onChange={
                             e => { 
-                                selectOrdenacao(e)
+                                setSelectOrdenacao(e.target.value)
                             }
                         }
 
@@ -123,7 +146,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         <option value="nenhuma">
                             Nenhuma
                         </option>
-                        <option value="nome">
+                        <option value="nivel">
                             Nome
                         </option>
                         <option value="numeroDevs">
@@ -136,7 +159,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
                         label='Escolha a forma'
                         onChange={
                             e => {
-                                selectFormaOrndenacao(e.target.value)
+                                setSelectFormaOrndenacao(e.target.value)
                             }
                         }
                         options={{
@@ -169,7 +192,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
 
                 <Table heads={["Nome", "Numero de desenvolvedores"]}>
                     {
-                        gerenciarDados(data)
+                        preenchimentoTable
                     }
                 </Table>
             </div>

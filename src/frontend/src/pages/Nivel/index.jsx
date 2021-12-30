@@ -58,32 +58,40 @@ const Nivel = ({ niveis, nivelNameList}) => {
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
     const [preenchimentoTable, setPreenchimentoTable] = useState(gerenciarDados(data))
 
-
+    // Preenchimento incial da alista
     useEffect(
         () => {
             setData(niveis)
-            setPreenchimentoTable(gerenciarDados(data))
+            setPreenchimentoTable(gerenciarDados(
+                data
+            ))
         },
         [niveis]
     )
 
+    // Ordenção da lista por topico em ordem crescente ou decrescente
     useEffect(
         () => {
             ordenacao()
-            setPreenchimentoTable(gerenciarDados(data))
         },
         [selectOrdenacao, selectFormaOrndenacao]
     )
 
     const ordenacao = () => {
         if (selectOrdenacao === "nenhuma"){
-            setData(data.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)))
+            setPreenchimentoTable(gerenciarDados(
+                data
+            ))
         }else{
             if (selectFormaOrndenacao === "crescente") {
-                setData(data.sort((a, b) => (a[selectOrdenacao] > b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] > a[selectOrdenacao]) ? -1 : 0)))
+                setPreenchimentoTable(gerenciarDados(
+                    [...data].sort((a, b) => (a[selectOrdenacao] > b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] > a[selectOrdenacao]) ? -1 : 0))
+                ))
 
             } else {
-                setData(data.sort((a, b) => (a[selectOrdenacao] < b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] < a[selectOrdenacao]) ? -1 : 0)))
+                setPreenchimentoTable(gerenciarDados(
+                    [...data].sort((a, b) => (a[selectOrdenacao] < b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] < a[selectOrdenacao]) ? -1 : 0))
+                ))
             }
         }
     }

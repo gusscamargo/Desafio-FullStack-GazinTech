@@ -72,7 +72,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
     // Ordenção da lista por topico em ordem crescente ou decrescente
     useEffect(
         () => {
-            ordenacao()
+            ordenacaoByItem()
         },
         [selectOrdenacao, selectFormaOrndenacao]
     )
@@ -82,7 +82,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
         [searchNivel]
     )
 
-    const ordenacao = () => {
+    const ordenacaoByItem = () => {
         if (selectOrdenacao === "nenhuma"){
             setPreenchimentoTable(gerenciarDados(
                 data
@@ -102,10 +102,9 @@ const Nivel = ({ niveis, nivelNameList}) => {
     }
 
     const searchByString = currentSearch => {
-        const d = [...data]
-        const result = []
+        const result = [];
 
-        d.map((item, indexo) => {
+        [...data].map((item, indexo) => {
             if (item.nivel.search(currentSearch) > -1) result.push(item)
         })
 

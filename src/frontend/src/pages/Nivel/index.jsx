@@ -77,6 +77,7 @@ const Nivel = ({ niveis, nivelNameList}) => {
         [selectOrdenacao, selectFormaOrndenacao]
     )
 
+    // Ordenação da lista de acordo com a barra de pesquisa de nomes
     useEffect(
         () => searchByString(searchNivel),
         [searchNivel]

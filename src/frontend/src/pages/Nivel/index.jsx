@@ -9,7 +9,7 @@ import Acoes from "../../components/Acoes"
 import AddButton from "../../components/AddButton"
 
 // Ferramentas
-import { atualizarNiveis } from"../../store/actions/nivel"
+// import { atualizarNiveis } from"../../store/actions/nivel"
 
 
 const gerenciarDados = data => {
@@ -50,7 +50,16 @@ const gerenciarDados = data => {
 }
 
 // Função principal
-const Nivel = ({ niveis, nivelNameList}) => {
+const Nivel = () => {
+
+    const { niveis, nivelNameList } = {
+        niveis: [
+            {id:0, nivel: "Jr", numeroDevs: 4}
+        ],
+        nivelNameList: [
+            "Jr"
+        ]
+    }
 
     const [searchNivel, setSearchNivel] = useState("")
     const [data, setData] = useState(niveis)
@@ -242,26 +251,27 @@ const getNameNiveis = data => {
     return niveis
 }
 
-const mapStateToProps = state => {
-    const {niveis} = state
-    const data = typeof niveis.data === 'undefined' ? [] : niveis.data
-    const nivelNameList = getNameNiveis(data)
+// const mapStateToProps = state => {
+//     const {niveis} = state
+//     const data = typeof niveis.data === 'undefined' ? [] : niveis.data
+//     const nivelNameList = getNameNiveis(data)
 
-    return {
-        niveis: data,
-        nivelNameList: nivelNameList,
-        status: niveis.status
-    }
-}
+//     return {
+//         niveis: data,
+//         nivelNameList: nivelNameList,
+//         status: niveis.status
+//     }
+// }
 
-const mapDispatchToProp = dispatch => (
-    bindActionCreators(
-        atualizarNiveis(dispatch),
-        dispatch
-    )
-)
+// const mapDispatchToProp = dispatch => (
+//     bindActionCreators(
+//         atualizarNiveis(dispatch),
+//         dispatch
+//     )
+// )
 
-export default connect(
-        mapStateToProps,
-        mapDispatchToProp
-    )(Nivel)
+// export default connect(
+//         mapStateToProps,
+//         mapDispatchToProp
+//     )(Nivel)
+export default Nivel

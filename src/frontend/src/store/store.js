@@ -1,20 +1,15 @@
-import {createStore, applyMiddleware} from 'redux'
-import {composeWithDevTools} from "redux-devtools-extension"
+import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
+import nivelReducer from "../features/nivel/nivelSlice"
 import thunk from 'redux-thunk'
-import rootReducer from "./reducers"
 
-const initialState = {}
-const middleware = [
-    thunk
-]
+// Reducers
 
-
-const storeConfig = () => {
-    return createStore(
-        rootReducer,
-        initialState,
-        composeWithDevTools(applyMiddleware(...middleware))
-    )
-}
-
-export default storeConfig
+export default configureStore({
+    reducer: {
+        nivel: nivelReducer
+    },
+    middleware: [
+        thunk
+    ]
+})

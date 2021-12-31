@@ -29,11 +29,6 @@ const getNameNiveis = data => {
     return niveis
 }
 
-
-const gerarRowTable = data => {
-    
-}
-
 // Função principal
 const Nivel = () => {
 

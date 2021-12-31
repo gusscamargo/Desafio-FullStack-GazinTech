@@ -26,6 +26,4 @@ export const niveSlice = createSlice({
     }
 })
 
-// export const {getAll} = niveSlice.actions
-
 export default niveSlice.reducer

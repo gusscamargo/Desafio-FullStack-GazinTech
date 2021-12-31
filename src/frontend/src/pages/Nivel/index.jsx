@@ -65,36 +65,29 @@ const gerarRowTable = data => {
     }
 }
 
-// const { niveis2, nivelNameList } = {
-//     niveis2: [
-//         { id: 0, nivel: "Jr", numeroDevs: 4 }
-//     ],
-//     nivelNameList: {
-//         "jr": null
-//     }
-// }
-
 // Função principal
 const Nivel = () => {
+
+    // Dados essenciais
     const dispatch = useDispatch()
     const niveisResponse = useSelector(state => state.nivel)
     const nivelNameList = getNameNiveis(niveisResponse.value.data)
     
-
+    // Mundaças de estado da pagina
     const [searchNivel, setSearchNivel] = useState("")
     const [data, setData] = useState(niveisResponse.value.data)
-    console.log(data)
     const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
     const [preenchimentoTable, setPreenchimentoTable] = useState(gerarRowTable(data))
 
+
+    // Atualizar data ao iniciar tela
     useEffect(
         () => {
             dispatch(fetchAllNiveis())
         },
         []
     )
-
     
     // Mudança de estado da tada
     useEffect(

@@ -2,9 +2,9 @@ import {Route, Routes} from "react-router-dom"
 
 import Home from "../pages/Home"
 import Niveis from "../pages/Nivel"
-import Niveil from "../pages/Nivel/NivelPage"
-import Desenvolvedores from "../pages/Desenvolvedor"
-import Desenvolvedor from "../pages/Desenvolvedor/DesenvolvedorPage"
+// import Niveil from "../pages/Nivel/NivelPage"
+// import Desenvolvedores from "../pages/Desenvolvedor"
+// import Desenvolvedor from "../pages/Desenvolvedor/DesenvolvedorPage"
 import NotFound404 from "../pages/Error/NotFound404Page"
 
 export default function Content() {

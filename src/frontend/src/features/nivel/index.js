@@ -1,16 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
-import bd from "../../services/nivelService"
-
-
-export const fetchAllNiveis = createAsyncThunk(
-    "nivel/getAll",
-    async () => {
-        const response = await bd.getAll()
-        return response
-    }
-)
-
+import { fetchAllNiveis } from "./fetchAllNiveis"
+import { fetchById } from "./fetchById"
 
 export const niveSlice = createSlice({
     name: "nivel",
@@ -21,6 +12,10 @@ export const niveSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(fetchAllNiveis.fulfilled, (state, action) => {
+            state.value = action.payload
+        })
+
+        builder.addCase(fetchById.fulfilled, (state, action) => {
             state.value = action.payload
         })
     }

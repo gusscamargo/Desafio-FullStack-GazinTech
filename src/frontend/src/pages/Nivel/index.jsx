@@ -8,7 +8,7 @@ import Acoes from "../../components/Acoes"
 import AddButton from "../../components/AddButton"
 
 // Ferramentas
-import {fetchAllNiveis} from "../../features/nivel/nivelSlice"
+import { fetchAllNiveis } from "../../features/nivel/fetchAllNiveis"
 
 
 

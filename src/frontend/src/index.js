@@ -6,8 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 // Redux e configuração
 import {Provider as Redux} from "react-redux"
-import configStore from "./store/store"
-const store = configStore()
+import store from "./store/store"
 
 ReactDOM.render(
   <Redux store={store}>

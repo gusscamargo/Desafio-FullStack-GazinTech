@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import nivelReducer from "../features/nivel/nivelSlice"
+import nivelReducer from "../features/nivel"
 import thunk from 'redux-thunk'
 
 // Reducers

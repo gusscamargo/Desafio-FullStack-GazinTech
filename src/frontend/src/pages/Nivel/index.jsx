@@ -4,11 +4,13 @@ import { Autocomplete, Row, Select} from 'react-materialize'
 
 // Componentes
 import Table from "../../components/Table"
-import Acoes from "../../components/Acoes"
 import AddButton from "../../components/AddButton"
+import NivelRowTable from "../../components/Nivel/NivelRowTable"
 
 // Ferramentas
 import { fetchAllNiveis } from "../../features/niveis/fetchAllNiveis"
+import { ordenacaoByItem } from "../../services/tools/ordenacaoByItem"
+import { searchByString } from "../../services/tools/searchByString"
 
 
 
@@ -29,40 +31,7 @@ const getNameNiveis = data => {
 
 
 const gerarRowTable = data => {
-    if (data.length > 0){
-        return (
-            data.map((item, index) => (
-                <tr key={index}>
-                    <td>
-                        {item.nivel}
-                    </td>
-                    <td>
-                        {item.numeroDevs}
-                    </td>
-                    <td>
-                        <Acoes
-                            id={item.id}
-                            modalView={
-                                <div className="container">
-                                    <h5><strong>Nome:</strong> {item.nivel}</h5>
-                                    <h5><strong>Numero de desenvolvedores que são deste nivel:</strong> {item.numeroDevs}</h5>
-                                </div>
-                            }
-                            blockDeleteButton={ item.numeroDevs > 0 }
-                        />
-                    </td>
-                </tr>
-            ))
-        )
-    }else{
-        return (
-            <tr>
-                <td>
-                    Não há dados
-                </td>
-            </tr>
-        )
-    }
+    
 }
 
 // Função principal
@@ -78,7 +47,7 @@ const Nivel = () => {
     const [data, setData] = useState(niveisResponse.value.data)
     const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
-    const [preenchimentoTable, setPreenchimentoTable] = useState(gerarRowTable(data))
+    const [preenchimentoTable, setPreenchimentoTable] = useState(<NivelRowTable />)
 
 
     // Atualizar data ao iniciar tela
@@ -97,58 +66,42 @@ const Nivel = () => {
 
     // Preenchimento incial da lista
     useEffect(
-        () => setPreenchimentoTable(gerarRowTable(
-            data
-        )),
+        () => setPreenchimentoTable(<NivelRowTable
+            data={
+                data
+            }
+        />),
         [data]
     )
 
     // Ordenção da lista por topico em ordem crescente ou decrescente
     useEffect(
         () => {
-            ordenacaoByItem()
+            setPreenchimentoTable(
+                <NivelRowTable 
+                    data={
+                        ordenacaoByItem(data, selectOrdenacao, selectFormaOrndenacao)
+                    }
+                />
+            )
         },
         [selectOrdenacao, selectFormaOrndenacao]
     )
 
     // Ordenação da lista de acordo com a barra de pesquisa de nomes
     useEffect(
-        () => searchByString(searchNivel),
+        () => {
+            setPreenchimentoTable(
+                <NivelRowTable
+                    data={
+                        searchByString(data, searchNivel)
+                    }
+                />
+            )
+        },
         [searchNivel]
     )
 
-    const ordenacaoByItem = () => {
-        if (selectOrdenacao === "nenhuma"){
-            setPreenchimentoTable(gerarRowTable(
-                data
-            ))
-        }else{
-            if (selectFormaOrndenacao === "crescente") {
-                setPreenchimentoTable(gerarRowTable(
-                    [...data].sort((a, b) => (a[selectOrdenacao] > b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] > a[selectOrdenacao]) ? -1 : 0))
-                ))
-
-            } else {
-                setPreenchimentoTable(gerarRowTable(
-                    [...data].sort((a, b) => (a[selectOrdenacao] < b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] < a[selectOrdenacao]) ? -1 : 0))
-                ))
-            }
-        }
-    }
-
-    const searchByString = currentSearch => {
-        const result = [];
-
-        [...data].map((item, indexo) => {
-            if (item.nivel.search(currentSearch) > -1) result.push(item)
-        })
-
-        setPreenchimentoTable(gerarRowTable(
-            result
-        ))
-    }
-
-    
     return (
         <div>
             <div className="container">

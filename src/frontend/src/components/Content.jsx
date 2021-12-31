@@ -18,8 +18,8 @@ export default function Content() {
             <Route path="/nivel/:id" element={<Niveil />} /> 
             <Route path="/nivel/create" element={<NivelCreate />} /> 
 
-            {/* <Route path="/desenvolvedor" element={<Desenvolvedores />} />
-            <Route path="/desenvolvedor/:id" element={<Desenvolvedor />} />
+            {/* <Route path="/desenvolvedor" element={<Desenvolvedores />} /> */}
+            {/* <Route path="/desenvolvedor/:id" element={<Desenvolvedor />} />
             <Route path="/desenvolvedor/create" element={<Desenvolvedor />} /> */}
 
             <Route path="*" element={<NotFound404 />} />

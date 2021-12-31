@@ -1,4 +1,4 @@
-export const ordenacaoByItem = (data, selectOrdenacao) => {
+export const ordenacaoByItem = (data, selectOrdenacao, selectFormaOrndenacao) => {
     if (selectOrdenacao === "nenhuma"){
         return [...data]
     }else{

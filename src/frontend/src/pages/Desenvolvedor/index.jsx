@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { Textarea, Autocomplete, Row, Select } from 'react-materialize'
-
+import { useSelector, useDispatch } from 'react-redux'
 
 // Componentes
 import Table from '../../components/Table'
@@ -10,7 +8,22 @@ import Acoes from "../../components/Acoes"
 import AddButton from '../../components/AddButton'
 
 // Ferramentas
-import { atualizarDesenvolvedores } from '../../store/actions/desenvolvedor'
+import { fetchAllDevs } from '../../features/desenvolvedores/fetchAllDevs'
+
+const getNameDevs = data => {
+    if (data.length === 0) return {}
+
+    // Devs final list
+    const devs = {}
+
+    data.map(
+        (item, index) => {
+            devs[item.nome] = null
+        }
+    )
+
+    return devs
+}
 
 
 const gerenciarDados = data => {
@@ -39,11 +52,77 @@ const gerenciarDados = data => {
                 </tr>
             ))
         )
+    }else{
+        return (
+            <tr>
+                <td>Sem dados</td>
+            </tr>
+        )
     }
 }
 
 // Função principal
-const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
+const Desenvolvedor = () => {
+    const dispatch = useDispatch()
+    const desenvolvedoresResponse = useSelector(state => state.desenvolvedores)
+
+    const [linhasTable, setLinhasTable] = useState(gerenciarDados([]))
+    const [data, setData] = useState([])
+    const [devNameList, setDevNameList] = useState({})
+
+    useEffect(
+        () => dispatch(fetchAllDevs()),
+        []
+    )
+
+    useEffect(
+        () => setData(desenvolvedoresResponse.value.data),
+        [desenvolvedoresResponse]
+    )
+
+    useEffect(
+        () => {
+            setLinhasTable(
+                gerenciarDados(data)
+            )
+            setDevNameList(
+                getNameDevs(data)
+            )
+
+        },
+        [data]
+    )
+
+    const ordenacaoByItem = () => {
+        if (selectOrdenacao === "nenhuma") {
+            setPreenchimentoTable(gerarRowTable(
+                data
+            ))
+        } else {
+            if (selectFormaOrndenacao === "crescente") {
+                setPreenchimentoTable(gerarRowTable(
+                    [...data].sort((a, b) => (a[selectOrdenacao] > b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] > a[selectOrdenacao]) ? -1 : 0))
+                ))
+
+            } else {
+                setPreenchimentoTable(gerarRowTable(
+                    [...data].sort((a, b) => (a[selectOrdenacao] < b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] < a[selectOrdenacao]) ? -1 : 0))
+                ))
+            }
+        }
+    }
+
+    const searchByString = currentSearch => {
+        const result = [];
+
+        [...data].map((item, indexo) => {
+            if (item.nivel.search(currentSearch) > -1) result.push(item)
+        })
+
+        setPreenchimentoTable(gerarRowTable(
+            result
+        ))
+    }
 
     return (
         <div>
@@ -136,7 +215,9 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
 
                 <Table
                     heads={["Nome", "Nivel"]}>
-                    {gerenciarDados(desenvolvedores)}
+                    {
+                        linhasTable
+                    }
                 </Table>
             </div>
             
@@ -144,42 +225,6 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
     )
 }
 
-const getNameDevs = data => {
-    if (data.length === 0) return {}
 
-    // Devs final list
-    const devs = {}
 
-    data.map(
-        (item, index) => {
-            devs[item.nome] = null
-        }
-    )
-
-    return devs
-}
-
-const mapStateToProps = state => {
-    const {desenvolvedores} = state
-    const data = typeof desenvolvedores.data === "undefined" ? [] : desenvolvedores.data
-
-    const devNameList = getNameDevs(data)
-
-    return {
-        desenvolvedores: data,
-        status: desenvolvedores.status,
-        devNameList: devNameList
-    }
-}
-
-const mapDispatchToProp = dispatch => (
-    bindActionCreators(
-        atualizarDesenvolvedores(dispatch),
-        dispatch
-    )
-)
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProp
-)(Desenvolvedor)
+export default Desenvolvedor

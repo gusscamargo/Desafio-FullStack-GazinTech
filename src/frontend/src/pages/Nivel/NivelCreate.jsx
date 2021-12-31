@@ -1,4 +1,4 @@
-import NivelForm from "../../components/NivelForm"
+import NivelForm from "../../components/Nivel/NivelForm"
 
 const NivelCreate = () => {
     return (

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { connect } from "react-redux"
-import { bindActionCreators } from "redux"
+import { useSelector, useDispatch } from "react-redux"
 import { Autocomplete, Row, Select} from 'react-materialize'
 
 // Componentes
@@ -9,10 +8,27 @@ import Acoes from "../../components/Acoes"
 import AddButton from "../../components/AddButton"
 
 // Ferramentas
-// import { atualizarNiveis } from"../../store/actions/nivel"
+import {fetchAllNiveis} from "../../features/nivel/nivelSlice"
 
 
-const gerenciarDados = data => {
+
+const getNameNiveis = data => {
+    if (data.length === 0) return {}
+
+    // Niveis final list
+    const niveis = {}
+
+    data.map(
+        (item, index) => {
+            niveis[item.nivel] = null
+        }
+    )
+
+    return niveis
+}
+
+
+const gerarRowTable = data => {
     if (data.length > 0){
         return (
             data.map((item, index) => (
@@ -49,33 +65,49 @@ const gerenciarDados = data => {
     }
 }
 
+// const { niveis2, nivelNameList } = {
+//     niveis2: [
+//         { id: 0, nivel: "Jr", numeroDevs: 4 }
+//     ],
+//     nivelNameList: {
+//         "jr": null
+//     }
+// }
+
 // Função principal
 const Nivel = () => {
-
-    const { niveis, nivelNameList } = {
-        niveis: [
-            {id:0, nivel: "Jr", numeroDevs: 4}
-        ],
-        nivelNameList: [
-            "Jr"
-        ]
-    }
+    const dispatch = useDispatch()
+    const niveisResponse = useSelector(state => state.nivel)
+    const nivelNameList = getNameNiveis(niveisResponse.value.data)
+    
 
     const [searchNivel, setSearchNivel] = useState("")
-    const [data, setData] = useState(niveis)
+    const [data, setData] = useState(niveisResponse.value.data)
+    console.log(data)
     const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
-    const [preenchimentoTable, setPreenchimentoTable] = useState(gerenciarDados(data))
+    const [preenchimentoTable, setPreenchimentoTable] = useState(gerarRowTable(data))
 
-    // Preenchimento incial da alista
     useEffect(
         () => {
-            setData(niveis)
-            setPreenchimentoTable(gerenciarDados(
-                data
-            ))
+            dispatch(fetchAllNiveis())
         },
-        [niveis]
+        []
+    )
+
+    
+    // Mudança de estado da tada
+    useEffect(
+        () => setData(niveisResponse.value.data),
+        [niveisResponse]
+    )
+
+    // Preenchimento incial da lista
+    useEffect(
+        () => setPreenchimentoTable(gerarRowTable(
+            data
+        )),
+        [data]
     )
 
     // Ordenção da lista por topico em ordem crescente ou decrescente
@@ -94,17 +126,17 @@ const Nivel = () => {
 
     const ordenacaoByItem = () => {
         if (selectOrdenacao === "nenhuma"){
-            setPreenchimentoTable(gerenciarDados(
+            setPreenchimentoTable(gerarRowTable(
                 data
             ))
         }else{
             if (selectFormaOrndenacao === "crescente") {
-                setPreenchimentoTable(gerenciarDados(
+                setPreenchimentoTable(gerarRowTable(
                     [...data].sort((a, b) => (a[selectOrdenacao] > b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] > a[selectOrdenacao]) ? -1 : 0))
                 ))
 
             } else {
-                setPreenchimentoTable(gerenciarDados(
+                setPreenchimentoTable(gerarRowTable(
                     [...data].sort((a, b) => (a[selectOrdenacao] < b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] < a[selectOrdenacao]) ? -1 : 0))
                 ))
             }
@@ -118,7 +150,7 @@ const Nivel = () => {
             if (item.nivel.search(currentSearch) > -1) result.push(item)
         })
 
-        setPreenchimentoTable(gerenciarDados(
+        setPreenchimentoTable(gerarRowTable(
             result
         ))
     }
@@ -236,42 +268,4 @@ const Nivel = () => {
     )
 }
 
-const getNameNiveis = data => {
-    if (data.length === 0) return {}
-
-    // Niveis final list
-    const niveis = {}
-
-    data.map(
-        (item, index) => {
-            niveis[item.nivel] = null
-        }
-    )
-
-    return niveis
-}
-
-// const mapStateToProps = state => {
-//     const {niveis} = state
-//     const data = typeof niveis.data === 'undefined' ? [] : niveis.data
-//     const nivelNameList = getNameNiveis(data)
-
-//     return {
-//         niveis: data,
-//         nivelNameList: nivelNameList,
-//         status: niveis.status
-//     }
-// }
-
-// const mapDispatchToProp = dispatch => (
-//     bindActionCreators(
-//         atualizarNiveis(dispatch),
-//         dispatch
-//     )
-// )
-
-// export default connect(
-//         mapStateToProps,
-//         mapDispatchToProp
-//     )(Nivel)
 export default Nivel

@@ -1,17 +1,35 @@
 import { useEffect, useState } from "react"
-import { bindActionCreators } from "redux"
-import { connect } from 'react-redux'
+import { useParams } from "react-router-dom"
 import { Row, TextInput, Button, Icon } from 'react-materialize'
 import { ToastContainer, toast } from "react-toastify"
+import { useSelector, useDispatch } from "react-redux"
+import { fetchById } from "../../features/nivel/fetchById"
 
-import { getNivelId } from '../../store/actions/nivel'
 
+const NivelPage = () => {
+    const {id} = useParams()
+    const dispatch = useDispatch()
+    const nivel = useSelector(state => state.nivel)
 
-const NivelPage = ({data}) => {
-    const [nivel, setNivel] = useState("")
-    
+    const [data, setData] = useState(nivel.value.data)
+    const [inputNivel, setInputNivel] = useState("")
+    console.log(nivel.value.data.nivel)
+
+    // Baixar dados
     useEffect(
-        () => setNivel(data.nivel),
+        () => dispatch(fetchById(id)),
+        []
+    )
+    
+    // Setar dados
+    useEffect(
+        () => setData(nivel.value.data),
+        [nivel]
+    )
+    
+    // Dat valor pro input
+    useEffect(
+        () => setInputNivel(data.nivel),
         [data]
     )
 
@@ -26,9 +44,9 @@ const NivelPage = ({data}) => {
                         id="nivel"
                         label="Nome do nivel"
                         s={9}
-                        value={nivel}
+                        value={inputNivel}
                         onChange={
-                            w => setNivel(w.target.value)
+                            w => setInputNivel(w.target.value)
                         }
                     />
                     <Button
@@ -50,31 +68,4 @@ const NivelPage = ({data}) => {
     )
 }
 
-
-const mapStateToProps = state => {
-    const { niveis } = state
-    const data = typeof niveis.data === "undefined" ? [] : niveis.data
-    return {
-        data: data,
-        status: niveis.status
-    }
-}
-
-const mapDispatchToProp = dispatch => {
-    // Gambiarra eu sei
-    const id = window.location.pathname.match("[1-9][0-9]*")
-    
-    if(id !== null){
-        return (
-            bindActionCreators(
-                getNivelId(dispatch, id),
-                dispatch
-            )
-        )    
-    }    
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProp
-)(NivelPage)
+export default NivelPage

@@ -11,9 +11,12 @@ export default function AddButton() {
                 floating
                 icon={<Icon>add</Icon>}
                 large
-                node="button"
                 waves="light"
-                fab
+                node="button"
+                tooltip="Adicionar"
+                tooltipOptions={{
+                    position: "right"
+                }}
             />
         </Link>
     )

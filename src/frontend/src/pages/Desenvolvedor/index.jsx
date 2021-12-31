@@ -49,7 +49,7 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
         <div>
             <div className="container">
                 <Row>
-                    <h2>Desenolvedores</h2>
+                    <h2>Desenolvedores <AddButton /></h2>
                 </Row>
                 <Row>
                     <Autocomplete
@@ -139,7 +139,7 @@ const Desenvolvedor = ({ desenvolvedores, devNameList }) => {
                     {gerenciarDados(desenvolvedores)}
                 </Table>
             </div>
-            <AddButton />
+            
         </div>
     )
 }

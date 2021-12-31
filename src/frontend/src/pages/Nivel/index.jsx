@@ -153,7 +153,8 @@ const Nivel = () => {
         <div>
             <div className="container">
                 <Row>
-                    <h2>Niveis</h2>
+                    <h2>Niveis <AddButton /></h2>
+                    
                 </Row>
                 <Row>
                     <Autocomplete
@@ -256,7 +257,7 @@ const Nivel = () => {
                     }
                 </Table>
             </div>
-            <AddButton />
+            
         </div>
     )
 }

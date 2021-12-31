@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import niveisReducer from "../features/niveis"
 import nivelReducer from "../features/nivel"
 import thunk from 'redux-thunk'
 
@@ -6,6 +7,7 @@ import thunk from 'redux-thunk'
 
 export default configureStore({
     reducer: {
+        niveis: niveisReducer,
         nivel: nivelReducer
     },
     middleware: [

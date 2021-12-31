@@ -8,7 +8,7 @@ import Acoes from "../../components/Acoes"
 import AddButton from "../../components/AddButton"
 
 // Ferramentas
-import { fetchAllNiveis } from "../../features/nivel/fetchAllNiveis"
+import { fetchAllNiveis } from "../../features/niveis/fetchAllNiveis"
 
 
 
@@ -70,7 +70,7 @@ const Nivel = () => {
 
     // Dados essenciais
     const dispatch = useDispatch()
-    const niveisResponse = useSelector(state => state.nivel)
+    const niveisResponse = useSelector(state => state.niveis)
     const nivelNameList = getNameNiveis(niveisResponse.value.data)
     
     // Mundaças de estado da pagina

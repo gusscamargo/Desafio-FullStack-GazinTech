@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-import { fetchById } from "./fetchById"
+import { fetchAllNiveis } from "./fetchAllNiveis"
 
 export const niveSlice = createSlice({
-    name: "desenvolvedor",
+    name: "desenvolvedores",
     initialState: {
         value: {
-            data: {}
+            data: []
         }
     },
     extraReducers: builder => {
-        builder.addCase(fetchById.fulfilled, (state, action) => {
+        builder.addCase(fetchAllNiveis.fulfilled, (state, action) => {
             state.value = action.payload
         })
     }

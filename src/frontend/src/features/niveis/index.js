@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 import { fetchAllNiveis } from "./fetchAllNiveis"
-import { fetchById } from "../nivel/fetchById"
 
 export const niveSlice = createSlice({
     name: "niveis",

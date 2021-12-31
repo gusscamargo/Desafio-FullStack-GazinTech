@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { fetchById } from "../../features/nivel/fetchById"
+import { fetchById } from "../../store/features/nivel/fetchById"
 
 import NivelForm from "../../components/Nivel/NivelForm"
 

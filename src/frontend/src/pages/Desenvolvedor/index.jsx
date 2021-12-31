@@ -8,7 +8,7 @@ import Acoes from "../../components/Acoes"
 import AddButton from '../../components/AddButton'
 
 // Ferramentas
-import { fetchAllDevs } from '../../features/desenvolvedores/fetchAllDevs'
+import { fetchAllDevs } from '../../store/features/desenvolvedores/fetchAllDevs'
 
 const getNameDevs = data => {
     if (data.length === 0) return {}

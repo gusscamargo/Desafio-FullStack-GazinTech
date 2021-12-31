@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import bd from "../../services/bd/nivelService"
+import bd from "../../../services/bd/desenvolvedorService"
 
 export const fetchById = createAsyncThunk(
-    "nivel/getById",
+    "desenvolvedor/getById",
     async id => {
         const response = await bd.get(id)
         return response

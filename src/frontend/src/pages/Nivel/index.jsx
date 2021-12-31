@@ -8,7 +8,7 @@ import AddButton from "../../components/AddButton"
 import NivelRowTable from "../../components/Nivel/NivelRowTable"
 
 // Ferramentas
-import { fetchAllNiveis } from "../../features/niveis/fetchAllNiveis"
+import { fetchAllNiveis } from "../../store/features/niveis/fetchAllNiveis"
 import { ordenacaoByItem } from "../../services/tools/ordenacaoByItem"
 import { searchByString } from "../../services/tools/searchByString"
 

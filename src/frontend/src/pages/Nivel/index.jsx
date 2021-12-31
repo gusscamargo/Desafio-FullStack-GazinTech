@@ -89,7 +89,7 @@ const Nivel = () => {
             setPreenchimentoTable(
                 <NivelRowTable
                     data={
-                        searchByString(data, searchNivel)
+                        searchByString(data, searchNivel, "nivel")
                     }
                 />
             )

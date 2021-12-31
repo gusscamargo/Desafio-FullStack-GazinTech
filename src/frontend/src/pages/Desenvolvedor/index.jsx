@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Textarea, Autocomplete, Row, Select } from 'react-materialize'
+import { Autocomplete, Row, Select } from 'react-materialize'
 import { useSelector, useDispatch } from 'react-redux'
 
 // Componentes
 import Table from '../../components/Table'
-import Acoes from "../../components/Acoes"
 import AddButton from '../../components/AddButton'
+import DesenvolvedorRowTable from '../../components/Desenvolvedor/DesenvolvedorRowTable'
 
 // Ferramentas
 import { fetchAllDevs } from '../../store/features/desenvolvedores/fetchAllDevs'
+import { ordenacaoByItem } from '../../services/tools/ordenacaoByItem'
+import { searchByString } from '../../services/tools/searchByString'
+
 
 const getNameDevs = data => {
     if (data.length === 0) return {}
@@ -25,50 +28,17 @@ const getNameDevs = data => {
     return devs
 }
 
-
-const gerenciarDados = data => {
-    if (data.length > 0){
-        return (
-            data.map((item, index) => (
-                <tr key={index}>
-                    <td>{item.nome}</td>
-                    <td>{item.Nivel.nivel}</td>
-                    <td>
-                        <Acoes
-                            id={item.id}
-                            modalView={
-                                <div className='container'>
-                                    <h5><strong>Nome:</strong> {item.nome}</h5>
-                                    <h5><strong>Sexo:</strong> {item.sexo}</h5>
-                                    <h5><strong>Data de nascimento:</strong> {item.datanascimento}</h5>
-                                    <h5><strong>Idade:</strong> {item.idade}</h5>
-                                    <h5><strong>Nivel:</strong> {item.Nivel.nivel}</h5>
-                                    <h5><strong>Hobby:</strong> {item.hobby === "" ? "Hobbies não informados" : ""}</h5>
-                                    {item.hobby !== "" ? <Textarea disabled={true} value={item.hobby} /> : ""}
-                                </div>
-                            }
-                        />
-                    </td>
-                </tr>
-            ))
-        )
-    }else{
-        return (
-            <tr>
-                <td>Sem dados</td>
-            </tr>
-        )
-    }
-}
-
 // Função principal
 const Desenvolvedor = () => {
     const dispatch = useDispatch()
     const desenvolvedoresResponse = useSelector(state => state.desenvolvedores)
 
-    const [linhasTable, setLinhasTable] = useState(gerenciarDados([]))
+    const [linhasTable, setLinhasTable] = useState(<DesenvolvedorRowTable />)
     const [data, setData] = useState([])
     const [devNameList, setDevNameList] = useState({})
+    const [searchNome, setSearchNome] = useState("")
+    const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
+    const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
 
     useEffect(
         () => dispatch(fetchAllDevs()),
@@ -83,7 +53,7 @@ const Desenvolvedor = () => {
     useEffect(
         () => {
             setLinhasTable(
-                gerenciarDados(data)
+                <DesenvolvedorRowTable data={data} />
             )
             setDevNameList(
                 getNameDevs(data)
@@ -93,36 +63,33 @@ const Desenvolvedor = () => {
         [data]
     )
 
-    const ordenacaoByItem = () => {
-        if (selectOrdenacao === "nenhuma") {
-            setPreenchimentoTable(gerarRowTable(
-                data
-            ))
-        } else {
-            if (selectFormaOrndenacao === "crescente") {
-                setPreenchimentoTable(gerarRowTable(
-                    [...data].sort((a, b) => (a[selectOrdenacao] > b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] > a[selectOrdenacao]) ? -1 : 0))
-                ))
+    // Ordenção da lista por topico em ordem crescente ou decrescente
+    useEffect(
+        () => {
+            setLinhasTable(
+                <DesenvolvedorRowTable
+                    data={
+                        ordenacaoByItem(data, selectOrdenacao, selectFormaOrndenacao)
+                    }
+                />
+            )
+        },
+        [selectOrdenacao, selectFormaOrndenacao]
+    )
 
-            } else {
-                setPreenchimentoTable(gerarRowTable(
-                    [...data].sort((a, b) => (a[selectOrdenacao] < b[selectOrdenacao]) ? 1 : ((b[selectOrdenacao] < a[selectOrdenacao]) ? -1 : 0))
-                ))
-            }
-        }
-    }
-
-    const searchByString = currentSearch => {
-        const result = [];
-
-        [...data].map((item, indexo) => {
-            if (item.nivel.search(currentSearch) > -1) result.push(item)
-        })
-
-        setPreenchimentoTable(gerarRowTable(
-            result
-        ))
-    }
+    // Ordenação da lista de acordo com a barra de pesquisa de nomes
+    useEffect(
+        () => {
+            setLinhasTable(
+                <DesenvolvedorRowTable
+                    data={
+                        searchByString(data, searchNome, "nome")
+                    }
+                />
+            )
+        },
+        [searchNome]
+    )
 
     return (
         <div>
@@ -139,12 +106,19 @@ const Desenvolvedor = () => {
                         placeholder="Escreva aqui"
                         title='Procurar desenvolvedor'
                         s={8}
+                        onChange={
+                            e => {
+                                setSearchNome(e.target.value)
+                            }
+                        }
                     />
                     <Select
                         id="select-nivel"
                         multiple={false}
                         label='Escolha ordenação'
-                        onChange={function noRefCheck() { }}
+                        onChange={e => {
+                            setSelectOrdenacao(e.target.value)
+                        }}
                         options={{
                             classes: '',
                             dropdownOptions: {
@@ -176,7 +150,7 @@ const Desenvolvedor = () => {
                         <option value="nome">
                             Nome
                         </option>
-                        <option value="nivel">
+                        <option value="Nivel.nivel">
                             Nivel
                         </option>
                     </Select>
@@ -184,7 +158,9 @@ const Desenvolvedor = () => {
                         id="select-ordem"
                         multiple={false}
                         label='Escolha a forma'
-                        onChange={function noRefCheck() { }}
+                        onChange={e => {
+                            setSelectFormaOrndenacao(e.target.value)
+                        }}
                         options={{
                             classes: '',
                             dropdownOptions: {

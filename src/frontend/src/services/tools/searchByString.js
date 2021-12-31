@@ -1,8 +1,8 @@
-export const searchByString = (data, currentSearch) => {
+export const searchByString = (data, currentSearch, campName) => {
     const result = [];
 
     [...data].map((item, indexo) => {
-        if (item.nivel.search(currentSearch) > -1) result.push(item)
+        if (eval(`item.${campName}.search(currentSearch) > -1`)) result.push(item)
     })
 
     return result

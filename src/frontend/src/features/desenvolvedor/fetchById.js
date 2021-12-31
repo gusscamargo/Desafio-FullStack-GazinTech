@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import bd from "../../services/desenvolvedorService"
+import bd from "../../services/bd/desenvolvedorService"
 
 export const fetchById = createAsyncThunk(
     "desenvolvedor/getById",

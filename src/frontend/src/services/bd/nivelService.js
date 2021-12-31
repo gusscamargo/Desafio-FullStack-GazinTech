@@ -1,4 +1,4 @@
-import bd from "../bd"
+import bd from "../../bd"
 
 const Service = new Object()
 

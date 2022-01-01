@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 import { fetchAllDevs } from "./fetchAllDevs"
 
-export const niveSlice = createSlice({
+export const desenvolvedoresSlice = createSlice({
     name: "desenvolvedores",
     initialState: {
         value: {
@@ -16,4 +16,4 @@ export const niveSlice = createSlice({
     }
 })
 
-export default niveSlice.reducer
+export default desenvolvedoresSlice.reducer

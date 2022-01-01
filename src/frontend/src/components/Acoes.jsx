@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Button, Icon, Modal } from "react-materialize"
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -87,7 +87,6 @@ export default function Acoes({id, modalView, blockDeleteButton = false}) {
                 icon={<Icon>delete</Icon>}
                 onClick={ deleteButtonAction }
             />
-            <ToastContainer />
         </div>
     )
 }

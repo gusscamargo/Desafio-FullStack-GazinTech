@@ -1,4 +1,5 @@
 import {Route, Routes} from "react-router-dom"
+import { ToastContainer } from "react-toastify"
 
 import Home from "../pages/Home"
 import Niveis from "../pages/Nivel"
@@ -25,6 +26,7 @@ export default function Content() {
 
             <Route path="*" element={<NotFound404 />} />
           </Routes>
+        <ToastContainer />
         </main>
     )
 }

@@ -6,6 +6,7 @@ import Nivel from "../pages/Nivel/NivelPage"
 import NivelCreate from "../pages/Nivel/NivelCreate"
 import Desenvolvedores from "../pages/Desenvolvedor"
 import Desenvolvedor from "../pages/Desenvolvedor/DesenvolvedorPage"
+import DesenvolvedorCreate from "../pages/Desenvolvedor/DesenvolvedorCreate"
 import NotFound404 from "../pages/Error/NotFound404Page"
 
 export default function Content() {
@@ -20,7 +21,7 @@ export default function Content() {
 
             <Route path="/desenvolvedor" element={<Desenvolvedores />} />
             <Route path="/desenvolvedor/:id" element={<Desenvolvedor />} />
-            {/* <Route path="/desenvolvedor/create" element={<Desenvolvedor />} /> */}
+            <Route path="/desenvolvedor/create" element={<DesenvolvedorCreate />} />
 
             <Route path="*" element={<NotFound404 />} />
           </Routes>

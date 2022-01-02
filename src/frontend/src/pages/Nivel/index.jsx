@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Autocomplete, Row, Select} from 'react-materialize'
-import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 // Componentes
 import Table from "../../components/Table"
@@ -35,7 +35,6 @@ const Nivel = () => {
 
     // Dados essenciais
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const niveisResponse = useSelector(state => state.niveis)
     const nivelNameList = getNameNiveis(niveisResponse.value.data)
     
@@ -46,7 +45,6 @@ const Nivel = () => {
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
     const [preenchimentoTable, setPreenchimentoTable] = useState(<NivelRowTable />)
 
-    console.log(window.location.pathname)
 
     // Atualizar data ao iniciar tela 
     useEffect(
@@ -56,6 +54,21 @@ const Nivel = () => {
         [window.location.pathname]
     )
     
+    useEffect(
+        () => {
+            dispatch(fetchAllNiveis())
+        },
+        []
+    )
+    
+    useEffect(
+        () => {
+            dispatch(fetchAllNiveis())
+        },
+        [niveisResponse]
+    )
+
+
     // Mudança de estado da tada
     useEffect(
         () => setData(niveisResponse.value.data),

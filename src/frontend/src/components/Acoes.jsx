@@ -1,15 +1,17 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Button, Icon, Modal } from "react-materialize"
-
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { deleteNivel } from '../store/features/nivel/delete';
+import { fetchAllNiveis } from '../store/features/niveis/fetchAllNiveis';
+
 
 
 export default function Acoes({id, modalView, blockDeleteButton = false}) {
     const { pathname } = useLocation()
-    
-    let deleteButtonToast = () => {}
+    const dispatch = useDispatch()
 
+    
     const deleteButtonAction = () => {
         if (blockDeleteButton){
             toast.error('Há desenvolvedores cadastrados com este nivel', {
@@ -21,6 +23,10 @@ export default function Acoes({id, modalView, blockDeleteButton = false}) {
                     draggable: true,
                     progress: undefined,
                 });
+        }else{
+            if(pathname === "/nivel"){
+                dispatch(deleteNivel(id))
+            }
         }
     }
 

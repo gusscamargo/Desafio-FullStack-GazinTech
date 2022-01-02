@@ -19,7 +19,9 @@ Service.update = data => {
 }
 
 Service.delete = data => {
-    return bd.delete("/nivel/delete", data)
+    return bd.delete("/nivel/delete", {
+        data: data
+    })
 }
 
 export default Service

@@ -21,7 +21,9 @@ export default function NivelRowTable({data = []}) {
                                     <h5><strong>Numero de desenvolvedores que são deste nivel:</strong> {item.numeroDevs}</h5>
                                 </div>
                             }
-                            blockDeleteButton={item.numeroDevs > 0}
+                            blockDeleteButton={
+                                item.numeroDevs > 0
+                            }
                         />
                     </td>
                 </tr>

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 import { fetchById } from "./fetchById"
+import { postDesenvolvedor } from "./post"
+import { putDesenvolvedor } from "./put"
 
 export const desenvolvedorSlice = createSlice({
     name: "desenvolvedor",
@@ -13,6 +15,10 @@ export const desenvolvedorSlice = createSlice({
         builder.addCase(fetchById.fulfilled, (state, action) => {
             state.value = action.payload
         })
+
+        builder.addCase(postDesenvolvedor.fulfilled)
+
+        builder.addCase(putDesenvolvedor.fulfilled)
     }
 })
 

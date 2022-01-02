@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Row, TextInput, Select, Textarea, Button, Icon, DatePicker } from "react-materialize"
 import { useNavigate } from 'react-router-dom'
 import { fetchAllNiveis } from '../../store/features/niveis/fetchAllNiveis'
+
 import { postDesenvolvedor } from '../../store/features/desenvolvedor/post'
+import { putDesenvolvedor } from '../../store/features/desenvolvedor/put'
 
 import { convertFormatTime, convertDbFormatToHuman } from '../../services/tools/convertFormatTime'
 import { toastError } from '../../services/tools/toastError'
@@ -77,7 +79,15 @@ export default function DesenvolvedorForm({data = {}}) {
                     hobby: hobbies
                 }))
             }else{
-
+                dispatch(putDesenvolvedor({
+                    id: data.id,
+                    nome,
+                    idade,
+                    datanascimento,
+                    sexo,
+                    nivel_id: nivel,
+                    hobby: hobbies
+                }))
             }
 
             navigate("/desenvolvedor")
@@ -148,7 +158,8 @@ export default function DesenvolvedorForm({data = {}}) {
                     options={{
                         autoClose: true,
                         container: null,
-                        defaultDate: datanascimento,
+                        setDefaultDate: true,
+                        defaultDate: new Date(datanascimento),
                         disableDayFn: null,
                         disableWeekends: false,
                         events: [],
@@ -218,7 +229,7 @@ export default function DesenvolvedorForm({data = {}}) {
                         },
                         isRTL: true,
                         maxDate: null,
-                        minDate: null,
+                        minDate: new Date("1970-01-01"),
                         onClose: null,
                         onDraw: null,
                         onOpen: null,

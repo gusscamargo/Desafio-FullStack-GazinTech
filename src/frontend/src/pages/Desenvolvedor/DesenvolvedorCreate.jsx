@@ -9,10 +9,7 @@ export default function DesenvolvedorCreate() {
             <Row>
                 <h2>Desenvolvedor</h2>
             </Row>
-            <form onSubmit={() => console.log("Submit form nivel")}>
                <DesenvolvedorForm />
-            </form>
-
         </div>
     )
 }

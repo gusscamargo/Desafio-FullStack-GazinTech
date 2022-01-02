@@ -16,7 +16,7 @@ const DesenvolvedorPage = () => {
     const [desenvolvedorForm, setDesevolvedorForm] = useState(<DesenvolvedorForm />)
 
     useEffect(
-        () => dispatch(fetchById(id)),
+        () => Array(4).fill(0).map(() => dispatch(fetchById(id))),
         []
     )
 
@@ -43,11 +43,9 @@ const DesenvolvedorPage = () => {
             <Row>
                 <h2>Desenvolvedor</h2>
             </Row>
-            <form onSubmit={() => console.log("Submit form nivel")}>
                 {
                     desenvolvedorForm
                 }
-            </form>
 
         </div>
     )

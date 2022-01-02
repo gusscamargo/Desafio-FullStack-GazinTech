@@ -41,7 +41,7 @@ const Desenvolvedor = () => {
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
 
     useEffect(
-        () => dispatch(fetchAllDevs()),
+        () => Array(4).fill(0).map(() => dispatch(fetchAllDevs())),
         [window.location.pathname]
     )
 

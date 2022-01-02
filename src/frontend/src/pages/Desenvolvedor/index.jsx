@@ -42,7 +42,7 @@ const Desenvolvedor = () => {
 
     useEffect(
         () => Array(4).fill(0).map(() => dispatch(fetchAllDevs())),
-        [window.location.pathname]
+        []
     )
 
     useEffect(
@@ -95,7 +95,7 @@ const Desenvolvedor = () => {
         <div>
             <div className="container">
                 <Row>
-                    <h2>Desenolvedores <AddButton /></h2>
+                    <h2>Desenvolvedores <AddButton /></h2>
                 </Row>
                 <Row>
                     <Autocomplete

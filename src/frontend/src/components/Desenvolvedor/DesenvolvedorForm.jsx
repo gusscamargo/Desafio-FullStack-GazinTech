@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Row, TextInput, Select, Textarea, Button, Icon } from "react-materialize"
+import { Row, TextInput, Select, Textarea, Button, Icon, DatePicker } from "react-materialize"
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 import { fetchAllNiveis } from '../../store/features/niveis/fetchAllNiveis'
+import { postDesenvolvedor } from '../../store/features/desenvolvedor/post'
+
+import { convertFormatTime, convertDbFormatToHuman } from '../../services/tools/convertFormatTime'
 
 export default function DesenvolvedorForm({data = {}}) {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const niveisResponse = useSelector(state => state.niveis)
     const [niveisData, setNiveisData] = useState([])
 
@@ -42,6 +48,54 @@ export default function DesenvolvedorForm({data = {}}) {
         [niveisResponse]
     )
 
+    const toastError = message => {
+        toast.error(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
+
+    const onChangeSave = () => {
+        if(nome === ""){
+            toastError('Campo nome não pode estar vazio')
+        }
+
+        if(idade === ""){
+            toastError("Campo idade não pode estar vazio")
+        }
+
+        if (datanascimento === ""){
+            toastError("Campo idade de nascimento não pode estar vazio")
+        }
+
+        if(nivel === ""){
+            toastError("Campo nivel não pode estar com nada seleiconado")
+        }
+
+        if(nome !== "" && idade !== "" && datanascimento !== "" && nivel !== ""){
+            if(typeof data.id === "undefined"){
+                dispatch(postDesenvolvedor({
+                    nome,
+                    idade,
+                    datanascimento,
+                    sexo,
+                    nivel_id: nivel,
+                    hobby: hobbies
+                }))
+            }else{
+
+            }
+
+            navigate("/desenvolvedor")
+        }
+    }
+
     return (
         <div>
             <Row>
@@ -54,7 +108,7 @@ export default function DesenvolvedorForm({data = {}}) {
                         e => {
                             setNome(e.target.value)
                         }
-                    }
+                    }                   
                 />
                 <Select
                     id="sexo"
@@ -98,15 +152,99 @@ export default function DesenvolvedorForm({data = {}}) {
                 </Select>
             </Row>
             <Row>
-                <TextInput
-                    id="datanascimento"
-                    label="Sua data de nascimento"
+                <DatePicker
+                    id="DatePicker-7"
                     s={4}
-                    value={datanascimento}
+                    label="Sua data de nascimento"
+                    value={convertDbFormatToHuman(datanascimento)}
+                    options={{
+                        autoClose: true,
+                        container: null,
+                        setDefaultDate: true,
+                        defaultDate: new Date(datanascimento),
+                        disableDayFn: null,
+                        disableWeekends: false,
+                        events: [],
+                        firstDay: 0,
+                        format: 'dd mm yyyy',
+                        i18n: {
+                            cancel: 'Cancelar',
+                            clear: 'Limpar',
+                            done: 'Ok',
+                            months: [
+                                'Janeiro',
+                                'Fevereiro',
+                                'Março',
+                                'Abril',
+                                'Maio',
+                                'Junho',
+                                'Julho',
+                                'Agosto',
+                                'Setembro',
+                                'Outubro',
+                                'Novembro',
+                                'Dezembro'
+                            ],
+                            monthsShort: [
+                                'Jan',
+                                'Fev',
+                                'Mar',
+                                'Abr',
+                                'Mai',
+                                'Jun',
+                                'Jul',
+                                'Ago',
+                                'Set',
+                                'Out',
+                                'Nov',
+                                'Dez'
+                            ],
+                            nextMonth: '›',
+                            previousMonth: '‹',
+                            weekdays: [
+                                'Domingo',
+                                'Segunda',
+                                'Terça',
+                                'Quarta',
+                                'Quinta',
+                                'Sexta',
+                                'Sabado'
+                            ],
+                            weekdaysAbbrev: [
+                                'D',
+                                'S',
+                                'T',
+                                'Q',
+                                'Q',
+                                'S',
+                                'S'
+                            ],
+                            weekdaysShort: [
+                                'Dom',
+                                'Seg',
+                                'Ter',
+                                'Qua',
+                                'Qui',
+                                'Sex',
+                                'Sab'
+                            ]
+                        },
+                        isRTL: true,
+                        maxDate: null,
+                        minDate: null,
+                        onClose: null,
+                        onDraw: null,
+                        onOpen: null,
+                        onSelect: null,
+                        parse: null,
+                        setDefaultDate: false,
+                        showClearBtn: false,
+                        showDaysInNextAndPreviousMonths: false,
+                        showMonthAfterYear: false,
+                        yearRange: 10
+                    }}
                     onChange={
-                        e => {
-                            setDatanascimento(e.target.value)
-                        }
+                        e => setDatanascimento(convertFormatTime(e))
                     }
                 />
                 <TextInput
@@ -185,6 +323,9 @@ export default function DesenvolvedorForm({data = {}}) {
                     node="button"
                     type="submit"
                     waves="light"
+                    onClick={
+                        onChangeSave
+                    }
                 >
                     Salvar
                     <Icon right>

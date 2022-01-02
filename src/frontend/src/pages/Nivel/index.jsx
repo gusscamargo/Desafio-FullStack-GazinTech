@@ -76,7 +76,7 @@ const Nivel = () => {
                 data
             }
         />),
-        [data]
+        [data, window.location.pathname, niveisResponse]
     )
 
     // Ordenção da lista por topico em ordem crescente ou decrescente

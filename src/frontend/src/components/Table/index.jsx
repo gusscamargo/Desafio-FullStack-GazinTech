@@ -4,7 +4,9 @@ import Head from './Head'
 
 function Table({ heads, children}) {
     return (
-        <TableMaterialize className="striped">
+        <TableMaterialize
+            striped={true}
+         >
             <Head 
                 heads={heads}
             />

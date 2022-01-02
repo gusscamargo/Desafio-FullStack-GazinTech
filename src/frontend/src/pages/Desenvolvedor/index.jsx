@@ -42,7 +42,7 @@ const Desenvolvedor = () => {
 
     useEffect(
         () => dispatch(fetchAllDevs()),
-        []
+        [window.location.pathname]
     )
 
     useEffect(

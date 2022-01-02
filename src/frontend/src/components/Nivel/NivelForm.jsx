@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { postNivel } from '../../store/features/nivel/post'
 import { putNivel } from '../../store/features/nivel/put'
+import { fetchAllNiveis } from '../../store/features/niveis/fetchAllNiveis'
 
 const NivelForm = ({nivel}) => {
 
@@ -30,7 +31,6 @@ const NivelForm = ({nivel}) => {
             }else{
                 dispatch(postNivel(data))           
             }
-            
             navagate("/nivel")
 
         }else{

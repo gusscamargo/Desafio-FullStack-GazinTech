@@ -49,7 +49,7 @@ const Nivel = () => {
     // Atualizar data ao iniciar tela 
     useEffect(
         () => {
-            dispatch(fetchAllNiveis())
+            Array(4).fill(0).map(() => dispatch(fetchAllNiveis()))
         },
         [window.location.pathname]
     )

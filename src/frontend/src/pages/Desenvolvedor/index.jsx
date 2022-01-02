@@ -46,11 +46,6 @@ const Desenvolvedor = () => {
     )
 
     useEffect(
-        () => dispatch(fetchAllDevs()),
-        [desenvolvedoresResponse]
-    )
-
-    useEffect(
         () => setData(desenvolvedoresResponse.value.data),
         [desenvolvedoresResponse]
     )

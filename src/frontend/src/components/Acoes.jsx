@@ -26,6 +26,8 @@ export default function Acoes({id, modalView, blockDeleteButton = false}) {
         }else{
             if(pathname === "/nivel"){
                 dispatch(deleteNivel(id))
+            }else if(pathname === "/desenvolvedor"){
+                
             }
         }
     }

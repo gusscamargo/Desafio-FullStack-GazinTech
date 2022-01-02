@@ -19,7 +19,9 @@ Service.update = data => {
 }
 
 Service.delete = data => {
-    return bd.delete("/desenvolvedor/delete", data)
+    return bd.delete("/desenvolvedor/delete", {
+        data: data
+    })
 }
 
 export default Service

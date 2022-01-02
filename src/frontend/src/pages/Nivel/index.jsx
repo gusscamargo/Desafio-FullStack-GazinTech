@@ -60,13 +60,7 @@ const Nivel = () => {
         },
         []
     )
-    
-    useEffect(
-        () => {
-            dispatch(fetchAllNiveis())
-        },
-        [niveisResponse]
-    )
+
 
 
     // Mudança de estado da tada

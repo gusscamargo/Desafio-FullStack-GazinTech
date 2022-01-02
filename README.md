@@ -55,6 +55,12 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requrid
 14. Banco MySQL sendo montado automaticamente com as tabelas dentro do container de banco de dados.
 15. Opção para consulta/gerenciamento do Banco de Dados via phpMyAdmin.
 
+## Notas e Avisos
+- Possua  Docker instalado na maquina obrigatoriamente.
+- Garanta que sua maquina tenha suporte a versão 3.8 do docker-compose antes de mais nada, caso não tenha, a instalação do ambiente irá retornar um erro antes mesmo de começar a subir os containers.
+- Garanta antas da instalação deste projeto que não haja qualquer container em execução na maquina para evitar conflitos de portas.
+- A versão do Frontend em execução é a versão buildada que se encontra em src/frontend/build, qualquer alteração na codagem do ReactJS não irá refletir no navegador.
+
 ## Como instalar e inicializar
 
 1. Clone este repositorio com:

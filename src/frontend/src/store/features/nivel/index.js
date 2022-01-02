@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 import { fetchById } from "./fetchById"
+import { postNivel } from "./post"
 
 export const niveSlice = createSlice({
     name: "nivel",
@@ -12,6 +13,10 @@ export const niveSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(fetchById.fulfilled, (state, action) => {
             state.value = action.payload
+        })
+
+        builder.addCase(postNivel.fulfilled, (state, action) => {
+
         })
     }
 })

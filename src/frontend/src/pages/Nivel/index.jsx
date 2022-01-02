@@ -50,7 +50,7 @@ const Nivel = () => {
         () => {
             dispatch(fetchAllNiveis())
         },
-        []
+        [dispatch]
     )
     
     // Mudança de estado da tada

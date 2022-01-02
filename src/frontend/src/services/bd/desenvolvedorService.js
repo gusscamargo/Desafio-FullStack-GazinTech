@@ -11,7 +11,7 @@ Service.get = id => {
 }
 
 Service.create = data => {
-    return bd.post("/desenvolvedor/", data)
+    return bd.post("/desenvolvedor/add", data)
 }
 
 Service.update = data => {

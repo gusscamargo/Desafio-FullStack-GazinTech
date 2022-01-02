@@ -54,6 +54,7 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requrid
 13. Foi construido o modelo relacional usado utilizado no MySQL e ele se encontra nas pasta projeto/
 14. Banco MySQL sendo montado automaticamente com as tabelas dentro do container de banco de dados.
 15. Opção para consulta/gerenciamento do Banco de Dados via phpMyAdmin.
+16. Gerenciamento do banco de dados MySQL na API via modelo [ORM](https://www.devmedia.com.br/tecnicas-de-mapeamento-objeto-relacional-revista-sql-magazine-40/6980) com o uso de Sequelize.
 
 ## Notas e Avisos
 - Possua  Docker instalado na maquina obrigatoriamente.
@@ -74,3 +75,7 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requrid
 6. Suba os ambientes de desenvolvimento:
 ```docker-compose up -d```
 7. Após os ambientes terem subido recomendo a espera de 1 minuto para a execução dos scripts de inicialização internos dos containers terminarem suas execuções antes de abrir o navegador ou o Postman e sair realizando os testes.
+8. Abra o navegador em [http://127.0.0.1/](http://127.0.0.1/).
+9. Encare a seguinte tela :) 
+![HOME](https://i.imgur.com/6rOqAB8.png)
+10. Aproveite e faça seus testes. 

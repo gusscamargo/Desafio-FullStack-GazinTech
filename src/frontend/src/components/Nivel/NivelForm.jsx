@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 import { toast } from "react-toastify"
 import { Row, TextInput, Button, Icon } from 'react-materialize'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { postNivel } from '../../store/features/nivel/post'
+import { putNivel } from '../../store/features/nivel/put'
 
 const NivelForm = ({nivel}) => {
 
+    const { id } = useParams()
     const dispatch = useDispatch()
     const navagate = useNavigate()
     const [inputNivel, setInputNivel] = useState(nivel || "")
@@ -22,8 +24,9 @@ const NivelForm = ({nivel}) => {
                 nivel: inputNivel
             }
 
-            if (typeof nivel.id !== "undefined") {
-                data.id = nivel.id
+            if (typeof id !== "undefined") {
+                data.id = id
+                dispatch(putNivel(data))
             }else{
                 dispatch(postNivel(data))           
             }

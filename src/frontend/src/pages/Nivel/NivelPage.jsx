@@ -31,6 +31,7 @@ const NivelPage = () => {
     useEffect(
         () => setForm(
                 <NivelForm
+                    id={id}
                     nivel={data.nivel}
                 />
             ),

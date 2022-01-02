@@ -120,7 +120,7 @@ export default function DesenvolvedorForm({data = {}}) {
                         }
                     }}
                     s={3}
-                    value={sexo}
+                    value={sexo.toString()}
                     onChange={
                         e => {
                             setSexo(e.target.value)
@@ -148,13 +148,12 @@ export default function DesenvolvedorForm({data = {}}) {
                     options={{
                         autoClose: true,
                         container: null,
-                        setDefaultDate: true,
-                        defaultDate: new Date(datanascimento),
+                        defaultDate: datanascimento,
                         disableDayFn: null,
                         disableWeekends: false,
                         events: [],
                         firstDay: 0,
-                        format: 'dd mm yyyy',
+                        format: 'dd mmm yyyy',
                         i18n: {
                             cancel: 'Cancelar',
                             clear: 'Limpar',
@@ -234,12 +233,14 @@ export default function DesenvolvedorForm({data = {}}) {
                     onChange={
                         e => setDatanascimento(convertFormatTime(e))
                     }
+                    readOnly
+                    
                 />
                 <TextInput
                     id="idade"
                     label="Sua idade"
                     s={4}
-                    value={idade}
+                    value={idade.toString()}
                     onChange={
                         e => {
                             const value = e.target.value
@@ -248,6 +249,7 @@ export default function DesenvolvedorForm({data = {}}) {
                                 setIdade(value)
                             }else{
                                 toastError("Digite uma idade valida")
+                                setIdade("")
                             }
                         }
                     }
@@ -274,7 +276,7 @@ export default function DesenvolvedorForm({data = {}}) {
                         }
                     }}
                     s={4}
-                    value={nivel}
+                    value={nivel.toString()}
                     onChange={
                         e => {
                             setNivel(e.target.value)

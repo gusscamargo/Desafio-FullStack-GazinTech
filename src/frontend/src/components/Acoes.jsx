@@ -28,11 +28,15 @@ export default function Acoes({id, modalView, blockDeleteButton = false}) {
                 });
         }else{
             if(pathname === "/nivel"){
+
                 dispatch(deleteNivel(id))             
                 Array(4).fill(0).map(() => dispatch(fetchAllNiveis()))   
+
             }else if(pathname === "/desenvolvedor"){
+
                 dispatch(deleteDesenvolvedor(id))
                 Array(4).fill(0).map(() => dispatch(fetchAllDevs()))
+                
             }
 
             

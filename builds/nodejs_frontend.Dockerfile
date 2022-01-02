@@ -12,4 +12,4 @@ WORKDIR /usr/app
 
 EXPOSE 3000
 
-ENTRYPOINT [ "serve", "-s", "build" ]
+ENTRYPOINT [ "npm", "run", "production" ]

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, TextInput, Select, Textarea, Button, Icon, DatePicker } from "react-materialize"
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { fetchAllNiveis } from '../../store/features/niveis/fetchAllNiveis'
 import { postDesenvolvedor } from '../../store/features/desenvolvedor/post'
 
 import { convertFormatTime, convertDbFormatToHuman } from '../../services/tools/convertFormatTime'
+import { toastError } from '../../services/tools/toastError'
 
 export default function DesenvolvedorForm({data = {}}) {
 
@@ -47,18 +47,6 @@ export default function DesenvolvedorForm({data = {}}) {
         () => setNiveisData(niveisResponse.value.data),
         [niveisResponse]
     )
-
-    const toastError = message => {
-        toast.error(message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
 
 
     const onChangeSave = () => {
@@ -254,7 +242,13 @@ export default function DesenvolvedorForm({data = {}}) {
                     value={idade}
                     onChange={
                         e => {
-                            setIdade(e.target.value)
+                            const value = e.target.value
+                            console.log(parseInt(value))
+                            if (isNaN(parseInt(value)) === false && value.length <= 3){
+                                setIdade(value)
+                            }else{
+                                toastError("Digite uma idade valida")
+                            }
                         }
                     }
                 />

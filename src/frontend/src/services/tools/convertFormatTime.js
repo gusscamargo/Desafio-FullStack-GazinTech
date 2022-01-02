@@ -6,7 +6,23 @@ export const convertFormatTime = (str) => {
 }
 
 export const convertDbFormatToHuman = (date) => {
-  const [a, m, d] = date.split("-")
+  if(date === "") return ""
 
-  return `${d} ${m} ${a}`
+  const [a, m, d] = date.split("-")
+  const mouths = [
+                  'Jan',
+                  'Fev',
+                  'Mar',
+                  'Abr',
+                  'Mai',
+                  'Jun',
+                  'Jul',
+                  'Ago',
+                  'Set',
+                  'Out',
+                  'Nov',
+                  'Dez'
+                ]
+                
+  return `${d} ${mouths[m - 1]} ${a}`
 }

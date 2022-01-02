@@ -2,8 +2,11 @@ import { Link, useLocation } from 'react-router-dom'
 import { Button, Icon, Modal } from "react-materialize"
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
+
 import { deleteNivel } from '../store/features/nivel/delete';
 import { fetchAllNiveis } from '../store/features/niveis/fetchAllNiveis';
+import { fetchAllDevs } from '../store/features/desenvolvedores/fetchAllDevs';
+import { deleteDesenvolvedor } from '../store/features/desenvolvedor/delete';
 
 
 
@@ -25,13 +28,14 @@ export default function Acoes({id, modalView, blockDeleteButton = false}) {
                 });
         }else{
             if(pathname === "/nivel"){
-                dispatch(deleteNivel(id))
-
-                Array(4).fill(0).map(() => dispatch(fetchAllNiveis()))
-                
+                dispatch(deleteNivel(id))             
+                Array(4).fill(0).map(() => dispatch(fetchAllNiveis()))   
             }else if(pathname === "/desenvolvedor"){
-                
+                dispatch(deleteDesenvolvedor(id))
+                Array(4).fill(0).map(() => dispatch(fetchAllDevs()))
             }
+
+            
         }
     }
 

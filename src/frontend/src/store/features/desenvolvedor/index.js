@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import { fetchById } from "./fetchById"
 import { postDesenvolvedor } from "./post"
 import { putDesenvolvedor } from "./put"
+import { deleteDesenvolvedor } from "./delete"
 
 export const desenvolvedorSlice = createSlice({
     name: "desenvolvedor",
@@ -19,6 +20,8 @@ export const desenvolvedorSlice = createSlice({
         builder.addCase(postDesenvolvedor.fulfilled)
 
         builder.addCase(putDesenvolvedor.fulfilled)
+
+        builder.addCase(deleteDesenvolvedor.fulfilled)
     }
 })
 

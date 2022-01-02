@@ -41,7 +41,16 @@ const Desenvolvedor = () => {
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
 
     useEffect(
-        () => Array(4).fill(0).map(() => dispatch(fetchAllDevs())),
+        () => {
+            Array(4).fill(0).map(() => dispatch(fetchAllDevs()))
+        },
+        [window.location.pathname]
+    )
+
+    useEffect(
+        () => {
+            dispatch(fetchAllDevs())
+        },
         []
     )
 
@@ -60,7 +69,7 @@ const Desenvolvedor = () => {
             )
 
         },
-        [data]
+        [data, window.location.pathname, desenvolvedoresResponse]
     )
 
     // Ordenção da lista por topico em ordem crescente ou decrescente

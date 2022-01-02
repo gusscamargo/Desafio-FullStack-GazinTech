@@ -101,7 +101,7 @@ controller.edit = async (req, res, next) => {
 // Excluiu um nivel mas não sem antes verificar se não há qualquer desenvolvedor relacionado a ele
 controller.delete = async (req, res, next) => {
     const {id} = await req.body
-
+    
     try{
         const {count} = await Desenvolvedor.findAndCountAll({
             where: {

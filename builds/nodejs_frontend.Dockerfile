@@ -10,6 +10,8 @@ RUN npm i -g -y
 
 WORKDIR /usr/app
 
+COPY src/frontend /usr/app
+
 EXPOSE 3000
 
 ENTRYPOINT [ "npm", "run", "production" ]

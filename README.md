@@ -79,3 +79,7 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 9. Encare a seguinte tela :) 
 ![HOME](https://i.imgur.com/6rOqAB8.png)
 10. Aproveite e faça seus testes. 
+
+## Rotas API
+
+Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://documenter.getpostman.com/view/2302068/UVRHj3g7)

@@ -162,7 +162,7 @@ Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://docume
 
 7. Após os ambientes terem subido recomendo a espera de 1 minuto para a execução dos scripts de inicialização internos dos containers terminarem suas execuções antes de abrir o navegador ou o Postman e sair realizando os testes.
 
-8. Abra o navegador em [http://127.0.0.1/](http://127.0.0.1/).
+8. Abra o navegador em [http://127.0.0.1/](http://127.0.0.1/) ou [http://127.0.0.1:8080/](http://127.0.0.1:8080/) caso queira abrir o phpMyAdmin.
 
 9. Encare a seguinte tela :)
 

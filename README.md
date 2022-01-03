@@ -62,6 +62,10 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 - Garanta antas da instalação deste projeto que não haja qualquer container em execução na maquina para evitar conflitos de portas.
 - A versão do Frontend em execução é a versão buildada que se encontra em src/frontend/build, qualquer alteração na codagem do ReactJS não irá refletir no navegador.
 
+## Rotas API
+
+Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://documenter.getpostman.com/view/2302068/UVRHj3g7)
+
 ## Como instalar e inicializar
 
 1. Clone este repositorio com:
@@ -78,8 +82,6 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 8. Abra o navegador em [http://127.0.0.1/](http://127.0.0.1/).
 9. Encare a seguinte tela :) 
 ![HOME](https://i.imgur.com/6rOqAB8.png)
-10. Aproveite e faça seus testes. 
+10. Aproveite, faça seus testes e obrigado por me acompanhar até aqui. 
 
-## Rotas API
-
-Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://documenter.getpostman.com/view/2302068/UVRHj3g7)
+![JAVASCRIPT1](https://www.freecodecamp.org/news/content/images/2019/07/this-is-javascript.jpeg)

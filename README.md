@@ -125,7 +125,7 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 
 - A versão do Frontend em execução é a versão buildada que se encontra em src/frontend/build, qualquer alteração na codagem do ReactJS não irá refletir no navegador.
 
-- Force um **Error 404** no frontend
+- **Dica de ouro:** force um **Error 404** no frontend
   
 
 ## Rotas API

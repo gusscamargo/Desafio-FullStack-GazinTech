@@ -58,3 +58,13 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+USE `desafio`;
+
+INSERT INTO `nivel` (`id`, `nivel`) VALUES
+(1, 'Junior'),
+(2, 'Pleno'),
+(3, 'Senior');
+
+INSERT INTO `desenvolvedor` (`id`, `nivel_id`, `nome`, `sexo`, `datanascimento`, `idade`, `hobby`) VALUES
+(1, 2, 'Gustavo Michels de Camargo', 'M', '1998-05-18', 23, 'Ler e ver series.');

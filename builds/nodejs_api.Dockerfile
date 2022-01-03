@@ -12,9 +12,7 @@ ENV NODE_PATH="/usr/data/node_modules"
 
 WORKDIR /usr/app
 
-COPY src/api /usr/app
-
-EXPOSE 3000
+EXPOSE 4000
 
 # ENTRYPOINT [ "npm", "run", "start" ]
 ENTRYPOINT [ "nodemon", "--legacy-watch", "app.js" ]

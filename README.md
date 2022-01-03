@@ -7,7 +7,7 @@ Link do desafio: [Desafio Gazin Tech]
 
 ## Objetivo
 
-Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requridos no [Desafio Gazin Tech] e aprimoramento de minhas proprias habilidades como desenvolvedor de Software.
+Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeridos no [Desafio Gazin Tech] e aprimoramento de minhas proprias habilidades como desenvolvedor de Software.
 
 
 ## O que compõe o projeto?
@@ -70,7 +70,7 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requrid
 ```cd "Desafio-Gazin-Tech"```
 3. Garanta que esteja com o Docker inicializado e funcionando na maquina e que suporte a versão 3.8 do docker-compose.
 4. Dê stop ou derrube todo e qualquer container Docker ativo para evitar conflito de portas neste momento com os containers que iremos subir.
-5. Construa as builds do ambiente com:
+5. Construa as builds do ambiente com(pode demorar um pouco):
 ```docker-compose build```
 6. Suba os ambientes de desenvolvimento:
 ```docker-compose up -d```

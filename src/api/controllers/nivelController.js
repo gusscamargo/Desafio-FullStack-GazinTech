@@ -7,6 +7,7 @@ controller = new Object()
 
 // Retorna todos os niveis
 controller.getAll = async (req, res, next) => {
+    console.log(req)
     try{
 
         // Procura todos os niveis e adiciona quantos devs estão relacionados

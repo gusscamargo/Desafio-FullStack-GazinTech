@@ -1,14 +1,5 @@
 const restify = require('restify')
-const corsMiddleware = require('restify-cors-middleware2')
 require('dotenv').config()
-
-// Middleware
-const crossOrigin = require("./middleware/crossOrigin")
-const cors = corsMiddleware({
-  allowHeaders: ['*'],
-  exposeHeaders: ['*'],
-  allowCredentialsAllOrigins: true
-})
 
 const server = restify.createServer({
   name: ' desafio-gazin-tech',
@@ -22,9 +13,12 @@ const port = process.env.PORT_API || 3000
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser({ mapParams: true }));
+
+// Middleware
+const cors = require("./middleware/cors")
+
 server.pre(cors.preflight)
 server.use(cors.actual)
-server.use(crossOrigin)
 
 // Routes
 const nivelRoute = require("./routes/nivel")

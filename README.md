@@ -242,9 +242,9 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://documenter.getpostman.com/view/2302068/UVRHj3g7)
 
 
-## Composição dos diretórios e arquivos
+## Arvore de diretorios e arquivos do projeto
 <details>
-  <summary>👉(<strong>Clique aqui 🔥</strong>)👈 Arvore de diretorios e arquivos do projeto</summary>
+  <summary>👉(<strong>Clique aqui 🔥</strong>)👈</summary>
 
 ```
 ├── README.md

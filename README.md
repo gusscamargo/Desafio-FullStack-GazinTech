@@ -7,7 +7,7 @@
 
   
 
-# Desafio-FullStack / Gazin Tech
+# Desafio FullStack / Gazin Tech
 
   
 

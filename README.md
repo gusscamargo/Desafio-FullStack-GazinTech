@@ -244,7 +244,7 @@ Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://docume
 
 ## Composição dos diretórios e arquivos
 <details>
-<summary>(Clique aqui) Arvore de diretorios e arquivos do projeto</summary>
+<summary>👉(Clique aqui)👈 Arvore de diretorios e arquivos do projeto</summary>
 
 ```
 ├── README.md

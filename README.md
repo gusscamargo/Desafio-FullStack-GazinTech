@@ -248,7 +248,6 @@ Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://docume
 
 ```
 ├── README.md
-├── arvore.txt
 ├── builds
 │   ├── nodejs_api.Dockerfile
 │   └── nodejs_frontend.Dockerfile

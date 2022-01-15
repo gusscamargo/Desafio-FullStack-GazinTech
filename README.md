@@ -414,7 +414,7 @@ Acesse no link: [Mapeamento de Rotas da API - Desafio Gazin Tech](https://docume
 
   
 
-```docker-compose build```
+```docker-compose build --no-cache```
 
   
 

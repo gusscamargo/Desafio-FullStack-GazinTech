@@ -229,7 +229,7 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 
   
 
-- **Dica de ouro:** force um **Error 404** no frontend
+- **Dica de ouro:** force um **Error 404** no frontend 🔥
 
   
 

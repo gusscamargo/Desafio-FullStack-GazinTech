@@ -41,15 +41,15 @@ const Nivel = () => {
     // Mundaças de estado da pagina
     const [searchNivel, setSearchNivel] = useState("")
     const [data, setData] = useState(niveisResponse.value.data)
+    const [niveis, setNiveis] = useState([])
     const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
-    const [preenchimentoTable, setPreenchimentoTable] = useState(<NivelRowTable />)
 
 
     // Atualizar data ao iniciar tela 
     useEffect(
         () => {
-            Array(4).fill(0).map(() => dispatch(fetchAllNiveis()))
+            Array(4).fill(0).forEach(() => dispatch(fetchAllNiveis()))
         },
         [window.location.pathname]
     )
@@ -61,8 +61,6 @@ const Nivel = () => {
         []
     )
 
-
-
     // Mudança de estado da tada
     useEffect(
         () => setData(niveisResponse.value.data),
@@ -71,24 +69,16 @@ const Nivel = () => {
 
     // Preenchimento incial da lista
     useEffect(
-        () => setPreenchimentoTable(<NivelRowTable
-            data={
-                data
-            }
-        />),
+        () => {
+            setNiveis(data)
+        },
         [data, window.location.pathname, niveisResponse]
     )
 
     // Ordenção da lista por topico em ordem crescente ou decrescente
     useEffect(
         () => {
-            setPreenchimentoTable(
-                <NivelRowTable 
-                    data={
-                        ordenacaoByItem(data, selectOrdenacao, selectFormaOrndenacao)
-                    }
-                />
-            )
+            setNiveis(ordenacaoByItem(data, selectOrdenacao, selectFormaOrndenacao))
         },
         [selectOrdenacao, selectFormaOrndenacao]
     )
@@ -96,13 +86,7 @@ const Nivel = () => {
     // Ordenação da lista de acordo com a barra de pesquisa de nomes
     useEffect(
         () => {
-            setPreenchimentoTable(
-                <NivelRowTable
-                    data={
-                        searchByString(data, searchNivel, "nivel")
-                    }
-                />
-            )
+            setNiveis(searchByString(data, searchNivel, "nivel"))
         },
         [searchNivel]
     )
@@ -210,9 +194,7 @@ const Nivel = () => {
                 </Row>
 
                 <Table heads={["Nome", "Numero de desenvolvedores"]}>
-                    {
-                        preenchimentoTable
-                    }
+                    <NivelRowTable data={niveis} />
                 </Table>
             </div>
             

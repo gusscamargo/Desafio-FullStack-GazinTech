@@ -25,7 +25,7 @@ Link do desafio: [Desafio Gazin Tech]
 
   
 
-Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeridos no [Desafio Gazin Tech] e aprimoramento de minhas proprias habilidades como desenvolvedor de Software.
+Desenvolvimento de um Projeto Full Stack Javascript MEARN seguintos os topicos requeridos no [Desafio Gazin Tech] e aprimoramento de minhas proprias habilidades como desenvolvedor de Software.
 
   
 

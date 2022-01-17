@@ -30,16 +30,20 @@ const getNameDevs = data => {
 
 // Função principal
 const Desenvolvedor = () => {
+    // Estados fundamentais
     const dispatch = useDispatch()
     const desenvolvedoresResponse = useSelector(state => state.desenvolvedores)
+    const [data, setData] = useState(desenvolvedoresResponse.value.data)
 
-    const [linhasTable, setLinhasTable] = useState(<DesenvolvedorRowTable />)
-    const [data, setData] = useState([])
+    // Estados proprios da tela
+    const [desenvolvedores, setDesenvovledores] = useState([])
     const [devNameList, setDevNameList] = useState({})
     const [searchNome, setSearchNome] = useState("")
     const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")
 
+
+    // Efects de conexão ao banco de dados
     useEffect(
         () => {
             Array(4).fill(0).map(() => dispatch(fetchAllDevs()))
@@ -61,9 +65,7 @@ const Desenvolvedor = () => {
 
     useEffect(
         () => {
-            setLinhasTable(
-                <DesenvolvedorRowTable data={data} />
-            )
+            setDesenvovledores(data)
             setDevNameList(
                 getNameDevs(data)
             )
@@ -75,13 +77,7 @@ const Desenvolvedor = () => {
     // Ordenção da lista por topico em ordem crescente ou decrescente
     useEffect(
         () => {
-            setLinhasTable(
-                <DesenvolvedorRowTable
-                    data={
-                        ordenacaoByItem(data, selectOrdenacao, selectFormaOrndenacao)
-                    }
-                />
-            )
+            setDesenvovledores(ordenacaoByItem(data, selectOrdenacao, selectFormaOrndenacao))
         },
         [selectOrdenacao, selectFormaOrndenacao]
     )
@@ -89,13 +85,7 @@ const Desenvolvedor = () => {
     // Ordenação da lista de acordo com a barra de pesquisa de nomes
     useEffect(
         () => {
-            setLinhasTable(
-                <DesenvolvedorRowTable
-                    data={
-                        searchByString(data, searchNome, "nome")
-                    }
-                />
-            )
+            setDesenvovledores(searchByString(data, searchNome, "nome"))
         },
         [searchNome]
     )
@@ -200,9 +190,7 @@ const Desenvolvedor = () => {
 
                 <Table
                     heads={["Nome", "Nivel"]}>
-                    {
-                        linhasTable
-                    }
+                    <DesenvolvedorRowTable data={desenvolvedores} />
                 </Table>
             </div>
             

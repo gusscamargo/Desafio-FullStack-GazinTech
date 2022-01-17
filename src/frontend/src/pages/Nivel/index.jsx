@@ -36,11 +36,11 @@ const Nivel = () => {
     // Dados essenciais
     const dispatch = useDispatch()
     const niveisResponse = useSelector(state => state.niveis)
+    const [data, setData] = useState(niveisResponse.value.data)
     const nivelNameList = getNameNiveis(niveisResponse.value.data)
     
     // Mundaças de estado da pagina
     const [searchNivel, setSearchNivel] = useState("")
-    const [data, setData] = useState(niveisResponse.value.data)
     const [niveis, setNiveis] = useState([])
     const [selectOrdenacao, setSelectOrdenacao] = useState("nenhuma")
     const [selectFormaOrndenacao, setSelectFormaOrndenacao] = useState("crescente")

@@ -77,15 +77,15 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 
   
 
-7. [Restify](http://restify.com/)
+9. [Restify](http://restify.com/)
 
   
 
-8. [Sequelize ORM](https://sequelize.org/v6/)
+10. [Sequelize ORM](https://sequelize.org/v6/)
 
   
 
-9. [MVC](https://www.devmedia.com.br/introducao-ao-padrao-mvc/29308)
+11. [MVC](https://www.devmedia.com.br/introducao-ao-padrao-mvc/29308)
 
   
 
@@ -95,43 +95,43 @@ Desenvolvimento de um Projeto Full Stack Javascript seguintos os topicos requeri
 
   
 
-10. [ReactJS](https://pt-br.reactjs.org/)
+12. [ReactJS](https://pt-br.reactjs.org/)
 
   
 
-11. [Redux](https://redux.js.org/)
+13. [Redux](https://redux.js.org/)
 
   
 
-12. [React Redux](https://react-redux.js.org/)
+14. [React Redux](https://react-redux.js.org/)
 
   
 
-13. [Single Page Application](https://www.devmedia.com.br/ja-ouviu-falar-em-single-page-applications/39009)
+15. [Single Page Application](https://www.devmedia.com.br/ja-ouviu-falar-em-single-page-applications/39009)
 
   
 
-14. [Axios](https://www.npmjs.com/package/axios)
+16. [Axios](https://www.npmjs.com/package/axios)
 
   
 
-15. [React Materialize](http://react-materialize.github.io/react-materialize/?path=/story/react-materialize--welcome)
+17. [React Materialize](http://react-materialize.github.io/react-materialize/?path=/story/react-materialize--welcome)
 
   
 
-16. [Materialize CSS](https://materializecss.com/)
+18. [Materialize CSS](https://materializecss.com/)
 
   
 
-17. [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
+19. [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
 
   
 
-18. [React Scripts](https://create-react-app.dev/)
+20. [React Scripts](https://create-react-app.dev/)
 
-19. [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+21. [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 
-20. [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+22. [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 
   
 
